@@ -1,29 +1,8 @@
-import type { Skill } from '../types'
+import type { SkillBar } from '../types'
 
-export const skills: Skill[] = [
-  {
-    id: 'languages',
-    icon: '💻',
-    items: ['TypeScript', 'JavaScript', 'Python', 'Go', 'SQL'],
-  },
-  {
-    id: 'frontend',
-    icon: '🎨',
-    items: ['Vue 3', 'React', 'Tailwind CSS', 'Vite', 'Pinia'],
-  },
-  {
-    id: 'backend',
-    icon: '⚙️',
-    items: ['Node.js', 'Express', 'FastAPI', 'PostgreSQL', 'Redis'],
-  },
-  {
-    id: 'devops',
-    icon: '🚀',
-    items: ['Docker', 'Kubernetes', 'GitHub Actions', 'AWS', 'Linux'],
-  },
-  {
-    id: 'production',
-    icon: '🌐',
-    items: ['Nginx', 'PM2', 'SSL/TLS', 'CI/CD', 'Monitoring'],
-  },
+export const skillBars: SkillBar[] = [
+  { name: 'Python', percentage: 90 },
+  { name: 'TypeScript', percentage: 80 },
+  { name: 'JavaScript', percentage: 75 },
+  { name: 'MicroPython', percentage: 70 },
 ]

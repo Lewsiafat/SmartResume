@@ -1,15 +1,29 @@
-export interface Skill {
+export type ProjectCategory = 'All' | 'FinTech' | 'IoT' | 'AI Tools' | 'Full-Stack'
+
+export interface Project {
+  id: string
+  emoji: string
+  category: ProjectCategory
+  tags: string[]
+  stats: string[]
+  github?: string
+  demo?: string
+}
+
+export interface SkillBar {
+  name: string
+  percentage: number
+}
+
+export interface TechCategory {
   id: string
   icon: string
   items: string[]
 }
 
-export interface Project {
+export interface GitHubStat {
   id: string
-  image: string
-  tags: string[]
-  github?: string
-  demo?: string
+  value: string
 }
 
 export type ThemeMode = 'light' | 'dark'
