@@ -13,7 +13,7 @@ useTheme()
 </script>
 
 <template>
-  <div class="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-200">
+  <div class="min-h-screen bg-ivory dark:bg-dark-bg transition-colors duration-200">
     <TheHeader />
     <main>
       <HeroSection />

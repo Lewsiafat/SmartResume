@@ -29,22 +29,22 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section id="about" class="py-20 bg-white dark:bg-slate-900">
+  <section id="about" class="py-20 bg-ivory dark:bg-dark-bg">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="section-title">{{ t('about.title') }}</h2>
       <p class="section-subtitle">{{ t('about.subtitle') }}</p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
         <!-- What I Do -->
-        <div class="bg-gray-50 dark:bg-slate-800 p-8 rounded-2xl border border-gray-200 dark:border-slate-700">
+        <div class="bg-primary-50 dark:bg-dark-card p-8 rounded-2xl border border-primary-100 dark:border-dark-border">
           <h3 class="text-accent-500 font-semibold text-lg mb-4 flex items-center gap-2">
             🎯 {{ t('about.whatIDo') }}
           </h3>
-          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          <p class="text-secondary-600 dark:text-accent-400 leading-relaxed mb-4">
             {{ t('about.whatIDoContent') }}
           </p>
           <p class="text-accent-500 font-semibold mb-2">{{ t('about.currentFocus') }}</p>
-          <ul class="text-gray-600 dark:text-slate-400 space-y-1">
+          <ul class="text-secondary-600 dark:text-accent-400 space-y-1">
             <li>• {{ t('about.focus1') }}</li>
             <li>• {{ t('about.focus2') }}</li>
             <li>• {{ t('about.focus3') }}</li>
@@ -52,7 +52,7 @@ onUnmounted(() => {
         </div>
 
         <!-- Skills -->
-        <div ref="skillsRef" class="bg-gray-50 dark:bg-slate-800 p-8 rounded-2xl border border-gray-200 dark:border-slate-700">
+        <div ref="skillsRef" class="bg-primary-50 dark:bg-dark-card p-8 rounded-2xl border border-primary-100 dark:border-dark-border">
           <h3 class="text-accent-500 font-semibold text-lg mb-4 flex items-center gap-2">
             💻 {{ t('about.skillsTitle') }}
           </h3>
@@ -62,13 +62,13 @@ onUnmounted(() => {
             class="mb-4 last:mb-0"
           >
             <div class="flex justify-between mb-1 text-sm">
-              <span class="text-gray-700 dark:text-slate-300">{{ skill.name }}</span>
-              <span class="text-gray-500 dark:text-slate-400">{{ skill.percentage }}%</span>
+              <span class="text-primary-900 dark:text-white font-medium">{{ skill.name }}</span>
+              <span class="text-secondary-500 dark:text-accent-400">{{ skill.percentage }}%</span>
             </div>
-            <div class="h-2 bg-gray-200 dark:bg-slate-600 rounded-full overflow-hidden">
+            <div class="h-2 bg-primary-100 dark:bg-dark-border rounded-full overflow-hidden">
               <div
                 class="h-full rounded-full transition-all duration-1000 ease-out"
-                style="background: linear-gradient(90deg, #667eea, #10b981)"
+                style="background: linear-gradient(90deg, #2d4a2b, #a4ac86)"
                 :style="{ width: skillsVisible ? `${skill.percentage}%` : '0%' }"
               />
             </div>

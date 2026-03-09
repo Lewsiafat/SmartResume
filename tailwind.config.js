@@ -9,34 +9,35 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#eef2ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#667eea',
-          600: '#5a67d8',
-          700: '#4c51bf',
-          800: '#434190',
-          900: '#3c366b',
+          50: '#f4f6f4',
+          100: '#e8ece8',
+          200: '#c6cfc6',
+          300: '#a4b1a4',
+          400: '#61765f',
+          500: '#3a5c38', // Lighter Forest Green
+          600: '#325031',
+          700: '#2a4329',
+          800: '#223621',
+          900: '#1a2919',
         },
         secondary: {
-          500: '#764ba2',
-          600: '#6b3fa0',
+          500: '#8c9480', // Lighter Sage
+          600: '#7a826e',
         },
         accent: {
-          400: '#34d399',
-          500: '#10b981',
-          600: '#059669',
+          400: '#c6ccae',
+          500: '#b4bc94', // Lighter Olive
+          600: '#a0a882',
         },
         dark: {
-          bg: '#0f172a',
-          card: '#1e293b',
-          border: '#334155',
+          bg: '#253124', // Lighter Deep Forest
+          card: '#2f3d2e',
+          border: '#415140',
         },
+        ivory: '#faf9f6',
       },
       fontFamily: {
-        sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
+        sans: ['Space Grotesk', 'Noto Sans TC', 'sans-serif'],
       },
       keyframes: {
         fadeInUp: {

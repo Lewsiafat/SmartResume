@@ -24,7 +24,7 @@ const closeMenu = () => {
 </script>
 
 <template>
-  <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/95 backdrop-blur-md border-b border-gray-200 dark:border-slate-700">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-ivory/80 dark:bg-dark-bg/95 backdrop-blur-md border-b border-primary-100 dark:border-dark-border">
     <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
@@ -38,7 +38,7 @@ const closeMenu = () => {
             v-for="link in navLinks"
             :key="link.href"
             :href="link.href"
-            class="text-gray-600 dark:text-slate-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+            class="text-secondary-500 dark:text-accent-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors font-medium"
           >
             {{ t(link.key) }}
           </a>
@@ -53,12 +53,12 @@ const closeMenu = () => {
         <!-- Mobile Menu Button -->
         <button
           @click="toggleMenu"
-          class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors"
+          class="md:hidden p-2 rounded-lg hover:bg-primary-50 dark:hover:bg-dark-card transition-colors"
           :aria-expanded="isMenuOpen"
           aria-label="Toggle menu"
         >
           <svg
-            class="w-6 h-6 text-gray-700 dark:text-slate-300"
+            class="w-6 h-6 text-primary-500 dark:text-accent-400"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -84,7 +84,7 @@ const closeMenu = () => {
       <!-- Mobile Menu -->
       <div
         v-show="isMenuOpen"
-        class="md:hidden py-4 border-t border-gray-200 dark:border-slate-700"
+        class="md:hidden py-4 border-t border-primary-100 dark:border-dark-border"
       >
         <div class="flex flex-col space-y-4">
           <a
@@ -92,7 +92,7 @@ const closeMenu = () => {
             :key="link.href"
             :href="link.href"
             @click="closeMenu"
-            class="text-gray-600 dark:text-slate-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+            class="text-secondary-500 dark:text-accent-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors font-medium"
           >
             {{ t(link.key) }}
           </a>

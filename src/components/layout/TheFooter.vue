@@ -9,7 +9,7 @@ const scrollToTop = () => {
 </script>
 
 <template>
-  <footer class="bg-gray-50 dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700">
+  <footer class="bg-primary-50 dark:bg-dark-card border-t border-primary-100 dark:border-dark-border">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="flex flex-col items-center text-center space-y-6">
         <!-- Social Links -->
@@ -18,7 +18,7 @@ const scrollToTop = () => {
             href="https://github.com/Lewsiafat"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-gray-500 dark:text-slate-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+            class="text-secondary-500 dark:text-accent-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
             aria-label="GitHub"
           >
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -29,7 +29,7 @@ const scrollToTop = () => {
             href="https://linkedin.com/in/lewischan"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-gray-500 dark:text-slate-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+            class="text-secondary-500 dark:text-accent-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
             aria-label="LinkedIn"
           >
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -38,7 +38,7 @@ const scrollToTop = () => {
           </a>
           <a
             href="mailto:lewsiafat@gmail.com"
-            class="text-gray-500 dark:text-slate-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+            class="text-secondary-500 dark:text-accent-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
             aria-label="Email"
           >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -47,13 +47,13 @@ const scrollToTop = () => {
           </a>
         </div>
 
-        <p class="text-gray-600 dark:text-slate-400 text-sm">
+        <p class="text-secondary-600 dark:text-accent-400 text-sm">
           {{ t('footer.designedBy') }}
         </p>
-        <p class="text-gray-500 dark:text-slate-500 text-xs">
+        <p class="text-secondary-500 dark:text-primary-400 text-xs">
           {{ t('footer.copyright') }}
         </p>
-        <p class="text-gray-500 dark:text-slate-500 text-xs">
+        <p class="text-secondary-500 dark:text-primary-400 text-xs">
           {{ t('footer.madeWith') }}
         </p>
 

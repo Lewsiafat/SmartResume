@@ -13,7 +13,7 @@ const categoryTitleMap: Record<string, string> = {
 </script>
 
 <template>
-  <section id="tech" class="py-20 bg-white dark:bg-slate-900">
+  <section id="tech" class="py-20 bg-ivory dark:bg-dark-bg">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="section-title">{{ t('techStack.title') }}</h2>
       <p class="section-subtitle">{{ t('techStack.subtitle') }}</p>
@@ -22,7 +22,7 @@ const categoryTitleMap: Record<string, string> = {
         <div
           v-for="category in techCategories"
           :key="category.id"
-          class="bg-gray-50 dark:bg-slate-800 p-6 rounded-2xl border border-gray-200 dark:border-slate-700"
+          class="bg-primary-50 dark:bg-dark-card p-6 rounded-2xl border border-primary-100 dark:border-dark-border"
         >
           <h3 class="text-accent-500 font-semibold mb-4 flex items-center gap-2">
             <span>{{ category.icon }}</span>
@@ -32,7 +32,7 @@ const categoryTitleMap: Record<string, string> = {
             <li
               v-for="item in category.items"
               :key="item"
-              class="text-gray-600 dark:text-slate-400 text-sm flex items-center gap-2"
+              class="text-secondary-600 dark:text-accent-400 text-sm flex items-center gap-2"
             >
               <span class="text-primary-500 font-bold">▹</span>
               {{ item }}

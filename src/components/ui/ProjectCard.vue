@@ -10,21 +10,21 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-gray-200 dark:border-slate-700 transition-all duration-300 hover:-translate-y-2 hover:border-primary-500 hover:shadow-xl hover:shadow-black/10 dark:hover:shadow-black/30">
+  <div class="group bg-ivory dark:bg-dark-card rounded-2xl overflow-hidden border border-primary-100 dark:border-dark-border transition-all duration-300 hover:-translate-y-2 hover:border-primary-500 hover:shadow-xl hover:shadow-primary-500/10 dark:hover:shadow-primary-500/20">
     <!-- Emoji Header -->
-    <div class="h-48 flex items-center justify-center text-7xl" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+    <div class="h-48 flex items-center justify-center text-7xl" style="background: linear-gradient(135deg, #3a5c38, #8c9480);">
       {{ project.emoji }}
     </div>
 
     <!-- Content -->
     <div class="p-6">
-      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-1">
+      <h3 class="text-xl font-semibold text-primary-900 dark:text-white mb-1">
         {{ t(`projects.${project.id}.title`) }}
       </h3>
-      <p class="text-sm text-gray-500 dark:text-slate-400 mb-3">
+      <p class="text-sm text-secondary-500 dark:text-accent-400 mb-3">
         {{ t(`projects.${project.id}.subtitle`) }}
       </p>
-      <p class="text-gray-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">
+      <p class="text-secondary-600 dark:text-accent-400 text-sm mb-4 leading-relaxed">
         {{ t(`projects.${project.id}.description`) }}
       </p>
 
@@ -40,7 +40,7 @@ const { t } = useI18n()
       </div>
 
       <!-- Stats -->
-      <div class="flex flex-wrap gap-3 text-sm text-gray-500 dark:text-slate-400 mb-4">
+      <div class="flex flex-wrap gap-3 text-sm text-secondary-500 dark:text-accent-400 mb-4">
         <span v-for="stat in project.stats" :key="stat">{{ stat }}</span>
       </div>
 

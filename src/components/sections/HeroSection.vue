@@ -16,9 +16,9 @@ const { displayText } = useTyping(typingTexts.value)
 </script>
 
 <template>
-  <section class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-900 dark:to-indigo-950">
+  <section class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden bg-gradient-to-br from-ivory to-primary-100 dark:from-dark-bg dark:to-primary-900">
     <!-- Decorative orb -->
-    <div class="absolute -top-48 -right-48 w-[500px] h-[500px] rounded-full bg-primary-500/5 dark:bg-primary-500/10 blur-3xl pointer-events-none" />
+    <div class="absolute -top-48 -right-48 w-[500px] h-[500px] rounded-full bg-primary-500/10 dark:bg-primary-500/20 blur-3xl pointer-events-none" />
 
     <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center animate-fade-in-up">
       <!-- Name -->
@@ -32,7 +32,7 @@ const { displayText } = useTyping(typingTexts.value)
       </p>
 
       <!-- Typing animation -->
-      <div class="text-lg sm:text-xl text-gray-500 dark:text-slate-400 min-h-[2em] mb-8">
+      <div class="text-lg sm:text-xl text-secondary-500 dark:text-accent-400 min-h-[2em] mb-8 font-medium">
         <span>{{ displayText }}</span>
         <span class="animate-blink">|</span>
       </div>

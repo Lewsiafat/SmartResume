@@ -6,7 +6,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <section class="py-20 bg-gray-50 dark:bg-slate-800/50">
+  <section class="py-20 bg-primary-50 dark:bg-dark-card/50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="section-title">{{ t('stats.title') }}</h2>
       <p class="section-subtitle">{{ t('stats.subtitle') }}</p>
@@ -15,12 +15,12 @@ const { t } = useI18n()
         <div
           v-for="stat in githubStats"
           :key="stat.id"
-          class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-gray-200 dark:border-slate-700 text-center"
+          class="bg-ivory dark:bg-dark-card p-6 rounded-2xl border border-primary-100 dark:border-dark-border text-center"
         >
           <div class="text-4xl font-extrabold gradient-text mb-2">
             {{ stat.value }}
           </div>
-          <div class="text-gray-500 dark:text-slate-400 text-sm">
+          <div class="text-secondary-600 dark:text-accent-400 text-sm">
             {{ t(`stats.${stat.id}`) }}
           </div>
         </div>
