@@ -14,6 +14,7 @@ export default {
     typingText4: 'From K-Line analysis to embedded hardware...',
     viewProjects: 'View My Projects',
     contactMe: 'Contact Me',
+    downloadResume: 'Download Resume',
   },
   about: {
     title: 'About Me',
@@ -100,7 +101,7 @@ export default {
     nameLabel: 'Name',
     namePlaceholder: 'Your name',
     emailLabel: 'Email',
-    emailPlaceholder: 'lewsiafat@gmail.com',
+    emailPlaceholder: "lewsiafat{'@'}gmail.com",
     subjectLabel: 'Subject',
     subjectOptions: {
       inquiry: 'Project Inquiry',

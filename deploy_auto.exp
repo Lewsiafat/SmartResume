@@ -1,0 +1,11 @@
+#!/usr/bin/expect -f
+set timeout -1
+spawn ./deploy.sh
+
+expect {
+    "assword:" {
+        send "picoservice322060\r"
+        exp_continue
+    }
+    eof
+}

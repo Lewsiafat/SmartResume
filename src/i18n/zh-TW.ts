@@ -14,6 +14,7 @@ export default {
     typingText4: '從 K 線分析到嵌入式硬體...',
     viewProjects: '查看作品',
     contactMe: '聯絡我',
+    downloadResume: '下載履歷',
   },
   about: {
     title: '關於我',
@@ -100,7 +101,7 @@ export default {
     nameLabel: '姓名',
     namePlaceholder: '您的姓名',
     emailLabel: 'Email',
-    emailPlaceholder: 'lewsiafat@gmail.com',
+    emailPlaceholder: "lewsiafat{'@'}gmail.com",
     subjectLabel: '主題',
     subjectOptions: {
       inquiry: '專案詢問',

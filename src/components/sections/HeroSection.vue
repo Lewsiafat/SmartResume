@@ -3,7 +3,11 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useTyping } from '../../composables/useTyping'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
+
+const resumePdfLink = computed(() => {
+  return locale.value === 'en' ? '/resume_en.pdf' : '/resume_zh.pdf'
+})
 
 const typingTexts = computed(() => [
   t('hero.typingText1'),
@@ -13,6 +17,10 @@ const typingTexts = computed(() => [
 ])
 
 const { displayText } = useTyping(typingTexts.value)
+
+const scrollTo = (id: string) => {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+}
 </script>
 
 <template>
@@ -38,12 +46,15 @@ const { displayText } = useTyping(typingTexts.value)
       </div>
 
       <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#projects" class="btn-primary">
+      <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4">
+        <a @click.prevent="scrollTo('projects')" href="#projects" class="btn-primary cursor-pointer">
           {{ t('hero.viewProjects') }} ↓
         </a>
-        <a href="#contact" class="btn-secondary">
+        <a @click.prevent="scrollTo('contact')" href="#contact" class="btn-secondary cursor-pointer">
           {{ t('hero.contactMe') }} →
+        </a>
+        <a :href="resumePdfLink" target="_blank" rel="noopener noreferrer" class="btn-secondary flex items-center gap-2">
+          <span>📄</span> {{ t('hero.downloadResume') }}
         </a>
       </div>
     </div>

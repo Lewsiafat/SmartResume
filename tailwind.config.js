@@ -9,25 +9,25 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#f4f6f4',
-          100: '#e8ece8',
-          200: '#c6cfc6',
-          300: '#a4b1a4',
-          400: '#61765f',
-          500: '#3a5c38', // Lighter Forest Green
-          600: '#325031',
-          700: '#2a4329',
-          800: '#223621',
-          900: '#1a2919',
+          50: '#f6f8f6',
+          100: '#edf1ed',
+          200: '#d1dcd1',
+          300: '#b5c7b5',
+          400: '#7da17b',
+          500: '#4b7049', // Even Lighter Forest Green
+          600: '#41613f',
+          700: '#375235',
+          800: '#2d432b',
+          900: '#233421',
         },
         secondary: {
-          500: '#8c9480', // Lighter Sage
-          600: '#7a826e',
+          500: '#9ba38f', // Lighter Sage
+          600: '#89917d',
         },
         accent: {
-          400: '#c6ccae',
-          500: '#b4bc94', // Lighter Olive
-          600: '#a0a882',
+          400: '#d5dbbf',
+          500: '#c4ccaa', // Lighter Olive
+          600: '#b2ba96',
         },
         dark: {
           bg: '#253124', // Lighter Deep Forest
