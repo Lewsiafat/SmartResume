@@ -8,6 +8,7 @@ export const projects: Project[] = [
     tags: ['Python', 'REST API', 'Real-time', 'Vibe Code', 'AI'],
     stats: ['📊 8 Indicators', '🔔 Smart Alerts'],
     github: 'https://github.com/Lewsiafat/scalping-trade',
+    demo: 'https://lewsi.ddns.net/scalping/',
   },
   {
     id: 'lazyBrother',
@@ -16,6 +17,7 @@ export const projects: Project[] = [
     tags: ['Python', 'LLM', 'SMC', 'AI'],
     stats: ['⭐ 1 Star', '🧠 AI-Powered'],
     github: 'https://github.com/Lewsiafat/LazyBrother',
+    demo: 'https://lewsi.ddns.net/lazybrother/',
   },
   {
     id: 'aiCodeReview',
