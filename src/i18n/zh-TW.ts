@@ -35,6 +35,7 @@ export default {
     filterIoT: 'IoT',
     filterAITools: 'AI 工具',
     filterFullStack: '全端',
+    filterGame: '遊戲',
     viewCode: 'GitHub',
     liveDemo: '線上展示',
     scalpingTrade: {
@@ -66,6 +67,11 @@ export default {
       title: 'Subscreen',
       subtitle: 'Presto 開發板觸控螢幕',
       description: '基於 MicroPython 為 Pimoroni Presto 開發板打造的觸控顯示解決方案。',
+    },
+    zhuyinGame: {
+      title: '注音打字大冒險',
+      subtitle: '瀏覽器注音符號打字練習遊戲',
+      description: '透過打出正確注音擊敗怪物的遊戲化打字練習，支援實體鍵盤與螢幕虛擬鍵盤，具備等級系統與 HP 機制。',
     },
   },
   techStack: {

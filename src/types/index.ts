@@ -1,4 +1,4 @@
-export type ProjectCategory = 'All' | 'FinTech' | 'IoT' | 'AI Tools' | 'Full-Stack'
+export type ProjectCategory = 'All' | 'FinTech' | 'IoT' | 'AI Tools' | 'Full-Stack' | 'Game'
 
 export interface Project {
   id: string

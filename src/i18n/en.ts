@@ -35,6 +35,7 @@ export default {
     filterIoT: 'IoT',
     filterAITools: 'AI Tools',
     filterFullStack: 'Full-Stack',
+    filterGame: 'Game',
     viewCode: 'GitHub',
     liveDemo: 'Live Demo',
     scalpingTrade: {
@@ -66,6 +67,11 @@ export default {
       title: 'Subscreen',
       subtitle: 'Touch Display for Presto Board',
       description: 'Touch-enabled secondary display solution built with MicroPython for Pimoroni Presto board.',
+    },
+    zhuyinGame: {
+      title: 'Zhuyin Typing Adventure',
+      subtitle: 'Browser-Based Zhuyin Typing Practice Game',
+      description: 'A gamified typing practice where players defeat monsters by typing correct Zhuyin symbols. Supports physical keyboard and on-screen virtual keyboard, with leveling system and HP mechanics.',
     },
   },
   techStack: {

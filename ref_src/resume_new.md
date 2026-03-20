@@ -119,6 +119,12 @@
 *   **技術架構：** MicroPython, Pico W, IoT
 *   🔗 [GitHub](https://github.com/Lewsiafat/Picore-W)
 
+### zhuyin-game
+**注音打字大冒險 — 瀏覽器注音符號打字練習遊戲**
+*   **專案概述：** 透過打出正確注音擊敗怪物的遊戲化打字練習，支援實體鍵盤與螢幕虛擬鍵盤，具備等級系統與 HP 機制。
+*   **技術架構：** Vue 3, PixiJS, Express, Vite, Vibe Coding, NanoClaw
+*   🔗 [GitHub](https://github.com/Lewsiafat/zhuyin-game)
+
 ---
 
 ## 線上資源 (Online Resources)

@@ -119,6 +119,12 @@ Participated in the core development during the founding stage of a casino game 
 *   **Tech Stack:** MicroPython, Pico W, IoT
 *   🔗 [GitHub](https://github.com/Lewsiafat/Picore-W)
 
+### zhuyin-game
+**Zhuyin Typing Adventure — Browser-Based Zhuyin Typing Practice Game**
+*   **Project Overview:** A gamified typing practice where players defeat monsters by typing correct Zhuyin (Bopomofo) symbols. Supports physical keyboard and on-screen virtual keyboard, featuring a leveling system and HP mechanics.
+*   **Tech Stack:** Vue 3, PixiJS, Express, Vite, Vibe Coding, NanoClaw
+*   🔗 [GitHub](https://github.com/Lewsiafat/zhuyin-game)
+
 ---
 
 ## Online Resources

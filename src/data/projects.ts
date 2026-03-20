@@ -52,4 +52,13 @@ export const projects: Project[] = [
     github: 'https://github.com/Lewsiafat/WebShareee',
     demo: 'https://lewsi.ddns.net/WebShareee/',
   },
+  {
+    id: 'zhuyinGame',
+    emoji: '🎮',
+    category: 'Game',
+    tags: ['Vue 3', 'PixiJS', 'Express', 'Vite'],
+    stats: ['🎯 Typing Practice', '👾 Monster Battle'],
+    github: 'https://github.com/Lewsiafat/zhuyin-game',
+    demo: 'https://lewsi.ddns.net/zhuyin-game/',
+  },
 ]
