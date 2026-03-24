@@ -9,69 +9,54 @@
 
 Good morning/afternoon. Thank you for having me today.
 
-My name is Lewis Chan. I'm a System Architect and Full-Stack Engineer with **15 years of software development experience** and **5 years of technical leadership**. Most recently, I served as a **Tech Lead** at Tianxu International, where I led a 6-person engineering team and delivered over 500 game products.
+My name is Lewis Chan. I'm a System Architect and Full-Stack Engineer with **15 years of software development experience** and **5 years of technical leadership**. Most recently, I served as a **Tech Lead** at Tianxu International, where I led an up-to-6-person engineering team and delivered over 500 game products.
 
 ---
 
-## 2. Understanding of the Company & Role (1 min)
-
-From what I've learned about this position, you're looking for a **senior engineer** who can take the lead in **architecting systems**, provide meaningful **code reviews**, and actively participate in the **DDD (Domain-Driven Design) process** alongside designers, product, and QA.
-
-The tech stack — **Python backend with Django RESTful framework**, **microservice architecture with gRPC**, **container technologies like Docker and Kubernetes**, and **Vue.js on the frontend** — aligns well with my background. I'm particularly excited about the emphasis on **horizontal and vertical scalability**, **distributed messaging systems**, and **real-time collaboration** features, as these are areas where I've built practical experience.
-
-I see this role as an opportunity to contribute my expertise in **system architecture**, **automation**, and **team-level engineering practices** to help build robust, scalable products.
-
----
-
-## 3. Relevant Experience — What I've Done (3-4 min)
+## 2. Relevant Experience — What I've Done (3-4 min)
 
 ### Backend & Architecture (Matching JD: Python, API, Microservices)
 
-In my most recent role, I designed and built multiple **Python-based backend systems**:
+In my most recent role, I designed and built multiple **Python-based systems**:
 
-- Developed **LittleGameCLITool**, a Python CLI tool that integrates with **GitLab API** and **CI/CD pipelines** to automate the entire project lifecycle — from creation, resource packaging, to version release. This reduced project creation time from **5 minutes to 30 seconds** and optimized project size from **450MB to around 10MB** through a resource-sharing mechanism.
+- First, I developed **GameCLITool**, a Python CLI tool that integrates with **GitLab API** to automate the entire project lifecycle — from creation, resource packaging, to version release. This reduced project creation time from **5 minutes to 30 seconds** and optimized project size from **450MB to around 10MB** through a resource-sharing mechanism.
 
-- Built a **Project Management Platform** integrating **Vue 3**, **Electron**, and **Python (FastAPI)** to centrally manage project lifecycles — essentially a full-stack internal tool with **RESTful APIs** and database integration.
+- Second, I developed a desktop GUI for GameCLITool using **Vue 3** and **Electron**, integrating the **GitLab API** to provide intuitive data visualization and streamline project management.
 
-- Created **WebShareee**, a lightweight web hosting service using **FastAPI, SQLite, and Nginx** with a complete frontend-backend separated architecture and user authentication system.
+- Third, I created **WebShareee**, a lightweight web hosting service using **FastAPI, SQLite, and Nginx** with a complete frontend-backend separated architecture and user authentication system.
 
 ### Frontend (Matching JD: Vue.js, Node.js)
 
 - Proficient with **Vue 3** using Composition API — my portfolio site and multiple internal tools are built with **Vue 3 + Vite + TypeScript + Tailwind CSS**.
-- Experience with **Node.js** ecosystem including bundling, NPM, and build tooling.
-
-### DevOps & CI/CD (Matching JD: CI/CD, Docker, Git Workflow)
-
-- Integrated **GitLab API** for automated repository management, project creation, and version release workflows.
-- At IGS, I optimized the release process using **Ant and batch scripts**, **reducing version deployment time by over 50%**.
-- Extensive experience with **Git workflow**, managing repositories and merge request processes for the team.
-- Strong **Linux/macOS shell scripting** skills for automation tasks.
 
 ### Real-time & Scalability (Matching JD: WebSocket, Distributed Systems)
 
-- Built **scalping-trade**, a real-time trading signal analysis platform using **Python REST APIs** with real-time data processing.
-- Experience with **caching strategies** and performance optimization in high-throughput environments.
+- Built **scalping-trade**, a real-time trading signal analysis platform using **WebSocket** for live data streaming from the **Binance API**, for fast market data processing and trading signals.
+
+### VPS & Server Management (Matching JD: Linux, Shell Scripting, Infrastructure)
+
+- I have hands-on experience setting up and managing **VPS servers**, and I'm comfortable writing **shell scripts** to deploy different services on them. For example, I deployed **NanoClaw** on my own **Oracle Cloud** server to stay up to date with **self-hosted AI** tools.
 
 ---
 
-## 4. Skills & Expertise (1 min)
+## 3. Skills & Expertise (1 min)
 
 My core technical stack includes:
 
 - **Python** as my primary backend language — FastAPI, automation tools, data processing
 - **JavaScript/Vue 3** for frontend development
-- **DevOps tooling** — CI/CD automation, Nginx, shell scripting, API integration
-- **Database design** — SQL (SQLite, PostgreSQL experience), understanding of caching layers
+- **DevOps tooling** — Nginx, shell scripting, API integration
+- **Database design** — SQL (SQLite, MS SQL), SQL command, DB Schema design
 - **System architecture** — MVC patterns, Dependency Injection, shared module design
 
-Beyond technical skills, I bring strong **AI-assisted development** expertise. I've introduced AI into our team's SDLC, including:
+Beyond technical skills, I bring strong **AI-assisted development** expertise:
 - Building **AICodeReviewCLI**, a multi-AI code review tool that **reduced our team's review time by 62.5%**
-- Establishing **AI usage guidelines** for the team
+- **Spec-Driven Development** by Conductor or spec-kit, and creating **agent skills**
 - All my recent open-source projects adopt an AI collaboration model
 
 ---
 
-## 5. Key Achievements (1-2 min)
+## 4. Key Achievements (1-2 min)
 
 Let me highlight a few achievements that I'm most proud of:
 
@@ -81,7 +66,17 @@ Let me highlight a few achievements that I'm most proud of:
 
 3. **Technical Transformation** — At IGS, I assisted the team in transitioning from **Flash web games to the Cocos2dx mobile framework**, introduced **MVC architecture and Dependency Injection** patterns, and designed shared component systems for Slot games that significantly accelerated new game development.
 
-4. **AI-Driven Code Review** — My AICodeReviewCLI tool was adopted by our 6-person team, cutting monthly review time from **4 days to 2 days** — a practical demonstration of using AI to improve engineering productivity.
+4. **AI-Driven Code Review** — My AICodeReviewCLI tool was adopted by our up-to-6-person team, cutting monthly review time from **4 days to 2 days** — a practical demonstration of using AI to improve engineering productivity.
+
+---
+
+## 5. Understanding of the Company & Role (1 min)
+
+From what I've learned about this position, you're looking for a **senior engineer** who can take the lead in **architecting systems**, provide meaningful **code reviews**, and take part in the **DDD (Domain-Driven Design) process** with designers, product, and QA.
+
+The tech stack matches a lot of what I've worked with — **Python backend with RESTful API**, and **Vue.js on the frontend**. As for **container technologies like Docker and Kubernetes**, that's an area I haven't deeply explored yet, but it's something I'm eager to learn and grow into.
+
+I see this role as an opportunity to bring my experience in **system architecture**, **automation**, and **team engineering practices** to help build robust, scalable products.
 
 ---
 
@@ -97,15 +92,15 @@ I'm excited about the opportunity to contribute to your team, and I'd love to di
 
 | JD Requirement | My Experience |
 |---|---|
-| Python Backend (Django RESTful) | 15 yrs Python; FastAPI/CLI tools; API design |
-| Database (PostgreSQL, Redis) | SQL design; SQLite; caching strategies |
-| Container (Docker/K8s) | CI/CD pipeline integration |
+| Python Backend (Django RESTful) | 15 yrs development; Python primary backend language; FastAPI/CLI tools; API design |
+| Database (PostgreSQL, Redis) | SQL (SQLite, MS SQL); SQL command, DB Schema design |
+| Container (Docker/K8s) | Basic Docker usage; eager to deepen K8s knowledge |
 | Microservice / gRPC | Modular architecture; API gateway experience |
 | Scalability (Redis, Load Balancing) | Resource optimization; high-throughput systems |
 | Message Queue (RabbitMQ/Kafka) | Familiar with distributed patterns |
 | Vue.js Frontend | Vue 3 + Vite + TypeScript (portfolio & internal tools) |
 | Testing (pytest, Cypress) | AI-assisted code review; testing automation |
-| CI/CD (Ansible, Jenkins) | GitLab API repo management; automated build/deploy pipelines |
+| CI/CD (Ansible, Jenkins) | GitLab API integration; shell script automation |
 | Real-time (WebSocket/WebRTC) | Real-time trading platform; live data processing |
 | Git Workflow | Team Git management; MR review process |
 | Shell Scripting | Extensive Linux/macOS scripting |
