@@ -36,6 +36,7 @@ export default {
     filterAITools: 'AI Tools',
     filterFullStack: 'Full-Stack',
     filterGame: 'Game',
+    filterTool: 'Tool',
     viewCode: 'GitHub',
     liveDemo: 'Live Demo',
     scalpingTrade: {
@@ -72,6 +73,11 @@ export default {
       title: 'Zhuyin Typing Adventure',
       subtitle: 'Browser-Based Zhuyin Typing Practice Game',
       description: 'A gamified typing practice where players defeat monsters by typing correct Zhuyin symbols. Supports physical keyboard and on-screen virtual keyboard, with leveling system and HP mechanics.',
+    },
+    pomodoroTimer: {
+      title: 'Pomodoro Timer',
+      subtitle: 'Pomodoro Technique Focus Timer',
+      description: 'Professional Pomodoro timer app with circular progress, task management, focus statistics, and browser notifications.',
     },
   },
   techStack: {

@@ -36,6 +36,7 @@ export default {
     filterAITools: 'AI 工具',
     filterFullStack: '全端',
     filterGame: '遊戲',
+    filterTool: '工具',
     viewCode: 'GitHub',
     liveDemo: '線上展示',
     scalpingTrade: {
@@ -72,6 +73,11 @@ export default {
       title: '注音打字大冒險',
       subtitle: '瀏覽器注音符號打字練習遊戲',
       description: '透過打出正確注音擊敗怪物的遊戲化打字練習，支援實體鍵盤與螢幕虛擬鍵盤，具備等級系統與 HP 機制。',
+    },
+    pomodoroTimer: {
+      title: 'Pomodoro Timer',
+      subtitle: '番茄工作法計時器',
+      description: '專業番茄鐘應用，具備圓形進度條、任務管理、專注統計與瀏覽器通知功能。',
     },
   },
   techStack: {

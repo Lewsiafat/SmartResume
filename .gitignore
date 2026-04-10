@@ -26,5 +26,9 @@ Thumbs.db
 *.log
 npm-debug.log*
 
-# Claude
-.claude/
+# Claude (keep skills/ in version control)
+.claude/*
+!.claude/skills/
+
+# Temp / progress checkpoints
+temp/

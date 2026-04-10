@@ -61,4 +61,13 @@ export const projects: Project[] = [
     github: 'https://github.com/Lewsiafat/zhuyin-game',
     demo: 'https://lewsi.ddns.net/zhuyin-game/',
   },
+  {
+    id: 'pomodoroTimer',
+    emoji: '🍅',
+    category: 'Tool',
+    tags: ['HTML5', 'JavaScript', 'Express', 'Vibe Code'],
+    stats: ['⏱️ Focus Timer', '📊 Statistics'],
+    github: 'https://github.com/Lewsiafat/pomodoro',
+    demo: 'https://lewsi.ddns.net/pomodoro/',
+  },
 ]

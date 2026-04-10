@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 個人 Portfolio Landing Page（Tech Dark 風格），使用 Vue 3 + Vite + TypeScript + Tailwind CSS 建構。
-展示個人簡介、技能進度條、7 個精選專案（FinTech / IoT / AI Tools / Full-Stack / Game）、技術棧、GitHub 統計與聯絡表單。
+展示個人簡介、技能進度條、8 個精選專案（FinTech / IoT / AI Tools / Full-Stack / Game / Tool）、技術棧、GitHub 統計與聯絡表單。
 支援深色/淺色模式切換與多語言（繁體中文/英文），Hero 區塊含打字動畫效果。
 
 ## Commands
@@ -14,8 +14,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 npm run dev        # 啟動開發伺服器
 npm run build      # TypeScript 型別檢查 (vue-tsc) + Vite 建置
 npm run preview    # 預覽建置結果
-npm run deploy     # 建置並部署至 VPS (rsync dist/ 到 lewsi.ddns.net，需 bash)
-npm run deploy:ps  # 同上，PowerShell 版本
 ```
 
 ## Architecture
