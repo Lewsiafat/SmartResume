@@ -15,7 +15,7 @@ const scrollToTop = () => {
         <!-- Social Links -->
         <div class="flex items-center space-x-6">
           <a
-            href="https://github.com/Lewsiafat"
+            href="https://github.com/sample-user"
             target="_blank"
             rel="noopener noreferrer"
             class="text-secondary-500 dark:text-accent-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
@@ -26,7 +26,7 @@ const scrollToTop = () => {
             </svg>
           </a>
           <a
-            href="https://www.linkedin.com/in/lewis-chan-78234221/"
+            href="https://www.linkedin.com/in/sample-user/"
             target="_blank"
             rel="noopener noreferrer"
             class="text-secondary-500 dark:text-accent-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
@@ -37,7 +37,7 @@ const scrollToTop = () => {
             </svg>
           </a>
           <a
-            href="mailto:lewsiafat@gmail.com"
+            href="mailto:alex.chen@example.com"
             class="text-secondary-500 dark:text-accent-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
             aria-label="Email"
           >

@@ -32,7 +32,7 @@ const handleSubmit = () => {
               <span class="text-2xl">🐙</span>
               <div>
                 <div class="font-medium text-primary-900 dark:text-white">{{ t('contact.github') }}</div>
-                <a href="https://github.com/Lewsiafat" target="_blank" rel="noopener noreferrer" class="text-primary-500 hover:text-primary-400">@Lewsiafat</a>
+                <a href="https://github.com/sample-user" target="_blank" rel="noopener noreferrer" class="text-primary-500 hover:text-primary-400">@sample-user</a>
               </div>
             </div>
 
@@ -40,7 +40,7 @@ const handleSubmit = () => {
               <span class="text-2xl">📧</span>
               <div>
                 <div class="font-medium text-primary-900 dark:text-white">{{ t('contact.email') }}</div>
-                <a href="mailto:lewsiafat@gmail.com" class="text-primary-500 hover:text-primary-400">lewsiafat@gmail.com</a>
+                <a href="mailto:alex.chen@example.com" class="text-primary-500 hover:text-primary-400">alex.chen@example.com</a>
               </div>
             </div>
 

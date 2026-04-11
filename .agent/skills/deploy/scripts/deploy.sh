@@ -14,9 +14,9 @@ NC='\033[0m' # No Color
 PROJECT_DIR="$(cd "$(dirname "$0")/../../.." && pwd)"
 
 # VPS 設定
-VPS_USER="lewsi"
-VPS_HOST="lewsi.ddns.net"
-VPS_PATH="/home/lewsi/workspace/landingPage"
+VPS_USER="deploy-user"
+VPS_HOST="example.com"
+VPS_PATH="/home/deploy-user/workspace/landingPage"
 
 echo -e "${YELLOW}========================================${NC}"
 echo -e "${YELLOW}  開始部署到生產環境${NC}"
