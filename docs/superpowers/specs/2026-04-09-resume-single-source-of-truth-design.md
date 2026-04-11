@@ -26,7 +26,7 @@ These diverge over time (e.g., TradeGuard exists in `ref_src/projects.md` but no
 **Structure:**
 
 ```
-# Lewis Chan
+# [Your Name]
 (name, title, contact links)
 
 ## Hero
