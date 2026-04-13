@@ -9,35 +9,35 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#f6f8f6',
-          100: '#edf1ed',
-          200: '#d1dcd1',
-          300: '#b5c7b5',
-          400: '#7da17b',
-          500: '#4b7049', // Even Lighter Forest Green
-          600: '#41613f',
-          700: '#375235',
-          800: '#2d432b',
-          900: '#233421',
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b', // Slate 500
+          600: '#475569', // Slate 600
+          700: '#334155', // Slate 700
+          800: '#1e293b', // Slate 800
+          900: '#0f172a', // Slate 900
         },
         secondary: {
-          500: '#9ba38f', // Lighter Sage
-          600: '#89917d',
+          500: '#64748b', // Slate 500
+          600: '#475569', // Slate 600
         },
         accent: {
-          400: '#d5dbbf',
-          500: '#c4ccaa', // Lighter Olive
-          600: '#b2ba96',
+          400: '#94a3b8', // Slate 400
+          500: '#64748b', // Slate 500
+          600: '#475569', // Slate 600
         },
         dark: {
-          bg: '#253124', // Lighter Deep Forest
-          card: '#2f3d2e',
-          border: '#415140',
+          bg: '#0f172a', // Slate 900
+          card: '#1e293b', // Slate 800
+          border: '#334155', // Slate 700
         },
-        ivory: '#faf9f6',
+        ivory: '#f8fafc', // Slate 50
       },
       fontFamily: {
-        sans: ['Space Grotesk', 'Noto Sans TC', 'sans-serif'],
+        sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
       },
       keyframes: {
         fadeInUp: {

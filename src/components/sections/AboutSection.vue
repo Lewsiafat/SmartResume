@@ -68,7 +68,7 @@ onUnmounted(() => {
             <div class="h-2 bg-primary-100 dark:bg-dark-border rounded-full overflow-hidden">
               <div
                 class="h-full rounded-full transition-all duration-1000 ease-out"
-                style="background: linear-gradient(90deg, #2d4a2b, #a4ac86)"
+                style="background: linear-gradient(90deg, #475569, #94a3b8)"
                 :style="{ width: skillsVisible ? `${skill.percentage}%` : '0%' }"
               />
             </div>
