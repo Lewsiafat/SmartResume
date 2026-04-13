@@ -22,12 +22,12 @@
 @layer components {
   .btn-primary {
     @apply inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold text-white transition-all duration-300;
-    background: linear-gradient(135deg, #475569, #94a3b8);
+    background: linear-gradient(135deg, #e76f51, #e9c46a);
   }
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(71, 85, 105, 0.25);
+    box-shadow: 0 10px 30px rgba(231, 111, 81, 0.25);
   }
 
   .btn-secondary {
@@ -41,7 +41,7 @@
 
   .section-title {
     @apply text-4xl font-bold text-center mb-4;
-    background: linear-gradient(135deg, #475569, #94a3b8);
+    background: linear-gradient(135deg, #e76f51, #e9c46a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -52,7 +52,7 @@
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #475569, #94a3b8);
+    background: linear-gradient(135deg, #e76f51, #e9c46a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
