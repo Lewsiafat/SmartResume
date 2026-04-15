@@ -32,4 +32,4 @@
 - [x] 建立 `.claude/skills/job-apply/` 目錄結構
 - [x] 撰寫 `SKILL.md` skill 定義檔（含 workflow、prompt 設計）
 - [x] 建立 `assets/customization-guide.md` 客製化策略指引
-- [ ] 測試 skill 完整流程
+- [x] 測試 skill 完整流程
