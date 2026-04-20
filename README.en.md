@@ -4,7 +4,7 @@
 
 **Language:** [🇹🇼 繁中](./README.md) | **🇬🇧 English**
 
-🌐 **Live Demo:** `https://<your-username>.github.io/SmartResume/` _(replace with your deployment URL after forking)_
+🌐 **Live Demo:** [https://lewsi.ddns.net/smartresume/](https://lewsi.ddns.net/smartresume/)
 
 Designed for AI-fluent users: not just a static site, but a full suite of AI Skills that let any AI agent maintain your resume, analyze job listings, and generate cover letters.
 

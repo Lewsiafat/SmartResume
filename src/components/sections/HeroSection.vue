@@ -6,7 +6,8 @@ import { useTyping } from '../../composables/useTyping'
 const { t, locale } = useI18n()
 
 const resumePdfLink = computed(() => {
-  return locale.value === 'en' ? '/resume_en.pdf' : '/resume_zh.pdf'
+  const file = locale.value === 'en' ? 'resume_en.pdf' : 'resume_zh.pdf'
+  return `${import.meta.env.BASE_URL}${file}`
 })
 
 const typingTexts = computed(() => [

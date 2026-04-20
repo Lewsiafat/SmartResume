@@ -4,7 +4,7 @@
 
 **語系:** **🇹🇼 繁中** | [🇬🇧 English](./README.en.md)
 
-🌐 **Live Demo:** `https://<your-username>.github.io/SmartResume/` _(Fork 後請替換成你自己的部署 URL)_
+🌐 **Live Demo:** [https://lewsi.ddns.net/smartresume/](https://lewsi.ddns.net/smartresume/)
 
 給「懂用 AI」的人設計：不只是靜態網站，還有一整套 AI Skills，讓各種 AI agent 幫你維護履歷、分析職缺、產出求職信。
 
