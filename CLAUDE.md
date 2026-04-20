@@ -73,7 +73,7 @@ TheFooter (social links + Back to Top)
 - **Dark mode**: Toggles via `document.documentElement.classList.add('dark')`, preference stored in `localStorage('theme')`.
 - **Locale**: Stored in `localStorage('locale')`, defaults to browser language detection.
 - **Color palette**: Autumn Sunset theme — primary #f4a261 (coral), secondary #c1666b (terracotta), accent #e9c46a (warm sand), dark-bg #264653 (deep teal).
-- **Fonts**: Space Grotesk + Noto Sans TC.
+- **Fonts**: Inter + Noto Sans TC.
 
 ## AI Skills
 

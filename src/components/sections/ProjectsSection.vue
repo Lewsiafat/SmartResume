@@ -14,11 +14,8 @@ useScrollReveal(sectionRef)
 
 const filters: { key: string; value: ProjectCategory }[] = [
   { key: 'projects.filterAll', value: 'All' },
-  { key: 'projects.filterFinTech', value: 'FinTech' },
-  { key: 'projects.filterIoT', value: 'IoT' },
   { key: 'projects.filterAITools', value: 'AI Tools' },
   { key: 'projects.filterFullStack', value: 'Full-Stack' },
-  { key: 'projects.filterGame', value: 'Game' },
   { key: 'projects.filterTool', value: 'Tool' },
 ]
 

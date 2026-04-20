@@ -43,7 +43,7 @@ Designed for AI-fluent users: not just a static site, but a full suite of AI Ski
 
 ```bash
 # Fork 後 clone 到本地
-git clone git@github.com:Lewsifat/SmartResume.git
+git clone git@github.com:<your-username>/SmartResume.git
 cd SmartResume
 npm install
 ```
@@ -308,7 +308,7 @@ VITE_FORMSPREE_ID=xxxxxxxx
 **Step 1: Fork this repo**
 
 ```bash
-git clone git@github.com:Lewsifat/SmartResume.git
+git clone git@github.com:<your-username>/SmartResume.git
 cd SmartResume && npm install
 ```
 
