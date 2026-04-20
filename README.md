@@ -253,6 +253,15 @@ npm run preview # 預覽建構結果
 
 建構產出在 `dist/` 目錄，可部署到 GitHub Pages、Vercel、Netlify 或自有 VPS。
 
+**GitHub Actions 部署到 VPS（subpath）**
+
+本專案已內建 `.github/workflows/deploy.yml`（手動觸發）。設定 SSH deploy key、GitHub Secrets、Nginx server block 的完整步驟見 [docs/deployment.md](docs/deployment.md)。
+若部署到 subpath（例如 `/smartresume/`），build 時需帶 `VITE_BASE` 環境變數：
+
+```bash
+VITE_BASE=/smartresume/ npm run build
+```
+
 ---
 
 ## 🔐 環境變數
@@ -271,3 +280,4 @@ VITE_FORMSPREE_ID=xxxxxxxx
 |------|------|------|
 | `VITE_GA_ID` | 否 | Google Analytics 4 追蹤 ID（格式 `G-XXXXXXXXXX`）。由 [src/analytics.ts](src/analytics.ts) 在執行時讀取，若未設定則完全略過注入 `gtag.js`。 |
 | `VITE_FORMSPREE_ID` | 否 | [Formspree](https://formspree.io) 表單 ID（取自 form URL `formspree.io/f/<id>` 的 `<id>` 部分）。未設定時 [ContactSection.vue](src/components/sections/ContactSection.vue) 的送出動作會顯示錯誤，提示使用者改寄 Email。 |
+| `VITE_BASE` | 否 | **Build 時使用。** [vite.config.ts](vite.config.ts) 讀取此變數設定 Vite 的 `base`（subpath 部署時必填，例如 `/smartresume/`）。未設時預設 `/`。範例：`VITE_BASE=/smartresume/ npm run build`。 |

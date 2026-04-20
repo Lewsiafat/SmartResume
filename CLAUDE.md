@@ -131,3 +131,8 @@ Optional `.env.local` at project root (gitignored):
 |----------|---------|
 | `VITE_GA_ID` | Google Analytics 4 measurement ID (`G-XXXXXXXXXX`). Read at runtime by [src/analytics.ts](src/analytics.ts); when unset the gtag script is not injected at all. |
 | `VITE_FORMSPREE_ID` | [Formspree](https://formspree.io) form ID — the `<id>` part of `formspree.io/f/<id>`. Used by [ContactSection.vue](src/components/sections/ContactSection.vue). Absent → contact form shows a friendly error instead of submitting. |
+| `VITE_BASE` | **Build-time only.** Consumed by [vite.config.ts](vite.config.ts) to set the Vite `base` option for subpath deployments (e.g. `/smartresume/`). Defaults to `/` when unset. Example: `VITE_BASE=/smartresume/ npm run build`. |
+
+## Deployment
+
+Manual deploy via GitHub Actions is configured in [.github/workflows/deploy.yml](.github/workflows/deploy.yml) (trigger: `workflow_dispatch`). Full setup — SSH deploy key, GitHub Secrets, Nginx server block, troubleshooting — is documented in [docs/deployment.md](docs/deployment.md).

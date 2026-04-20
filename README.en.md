@@ -56,6 +56,12 @@ Interactive Q&A — AI syncs everything to website files and generates resume PD
 npm run build
 ```
 
+For GitHub Actions deployment to a VPS (subpath, e.g. `/smartresume/`), see [docs/deployment.md](docs/deployment.md) for SSH key setup, GitHub Secrets, and Nginx config. Pass `VITE_BASE` at build time:
+
+```bash
+VITE_BASE=/smartresume/ npm run build
+```
+
 ---
 
 ## 📖 Use Cases
@@ -175,3 +181,4 @@ VITE_FORMSPREE_ID=xxxxxxxx
 |----------|----------|---------|
 | `VITE_GA_ID` | No | Google Analytics 4 measurement ID (`G-XXXXXXXXXX`). Read at runtime by [src/analytics.ts](src/analytics.ts); when unset the gtag script is not injected at all. |
 | `VITE_FORMSPREE_ID` | No | [Formspree](https://formspree.io) form ID — the `<id>` part of `formspree.io/f/<id>`. When unset [ContactSection.vue](src/components/sections/ContactSection.vue) gracefully shows an error prompting users to email you directly. |
+| `VITE_BASE` | No | **Build-time only.** Consumed by [vite.config.ts](vite.config.ts) to set Vite's `base` option for subpath deployments (e.g. `/smartresume/`). Defaults to `/` when unset. Example: `VITE_BASE=/smartresume/ npm run build`. |

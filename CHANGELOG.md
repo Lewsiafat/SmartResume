@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.3.0] - 2026-04-20
+
+### Added
+- **Bilingual README split** — `README.md` now houses zh-TW only (273 lines, was 448); new `README.en.md` (177 lines) hosts the English version. Language switcher badges at the top of each file cross-link via relative paths
+- **Live Demo badge** — both README files now show `https://lewsi.ddns.net/smartresume/` at the top
+- **VPS deploy via GitHub Actions** — new `.github/workflows/deploy.yml` (manual `workflow_dispatch` only) builds with `VITE_BASE` and rsyncs `dist/` to VPS via SSH using four secrets (`VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY`, `VPS_DEPLOY_PATH`)
+- **`docs/deployment.md`** — step-by-step guide for SSH deploy key generation, GitHub Secrets setup, Nginx server block config, local preview commands, and troubleshooting table
+- **Subpath deployment support** — `vite.config.ts` now reads `base` from `process.env.VITE_BASE`, defaulting to `/`; CI sets it to `/smartresume/` so generated asset URLs carry the correct prefix
+
+### Changed
+- `HeroSection.vue` resume PDF link uses `import.meta.env.BASE_URL` instead of hardcoded `/resume_*.pdf`, so it resolves correctly under any subpath deployment
+
 ## [1.2.1] - 2026-04-20
 
 ### Fixed
