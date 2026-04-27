@@ -25,11 +25,10 @@ description: >
   - `src/data/skills.ts` — 技能進度條
   - `src/data/techStack.ts` — 技術棧分類
   - `src/data/stats.ts` — GitHub 統計
-- **中文履歷 Markdown**: `ref_src/resume_new.md`
+- **中文履歷 Markdown**: `ref_src/resume_zh.md`
 - **英文履歷 Markdown**: `ref_src/resume_en.md`
 - **中文 PDF**: `public/resume_zh.pdf`
 - **英文 PDF**: `public/resume_en.pdf`
-- **歷史版本（不需更新）**: `ref_src/resume_full.md`, `ref_src/resume_updated.md`
 
 ## Workflow
 
@@ -51,7 +50,8 @@ description: >
 5. 更新 Work Experience
 6. 更新 GitHub Stats
 7. 更新 Contact 資訊
-8. 其他
+8. 更新 Education (學歷)
+9. 其他
 
 請輸入編號或直接描述你想更新的內容：
 ```
@@ -76,6 +76,28 @@ description: >
 10. **Description（zh-TW）** 和 **Description（en）**
 11. **Achievements** — 重點成果（bullet list）
 
+#### 更新 Education（學歷）：
+
+學歷可有多筆，依時間新到舊排序（學位高的在前）。對每一筆學歷，使用 AskUserQuestion 依序詢問：
+
+1. **學校（zh-TW）** 和 **學校（en）** — 如「範例大學」/「Sample University」
+2. **科系（zh-TW）** 和 **科系（en）** — 如「資訊工程學系」/「Computer Science and Engineering」
+3. **學位** — 學士 / 碩士 / 博士（自動對應 BS / MS / PhD；高中可填「高中畢業」）
+4. **起訖年份** — 如 `2013年 - 2017年` 或 `YYYY - YYYY`
+5. **備註**（選填）— GPA、實驗室、論文題目、社團經歷、雙主修等
+
+寫入 `main.md` 時於 `## Education` 區段（位置介於 `## Work Experience` 與 `## Side Projects` 之間）插入：
+
+```
+### 資訊工程學系 (Computer Science and Engineering) | 範例大學 (Sample University)
+*2013年 - 2017年 (學士 / BS)*
+
+*   主修軟體工程與分散式系統，畢業專題以 Vue.js 與 Node.js 實作協作型任務管理平台。
+*   GPA 3.8 / 4.0，連續兩學期獲書卷獎。
+```
+
+若 `main.md` 尚未有 `## Education` 區段，需於 Step 4 一併新增該區段標題。
+
 #### 更新其他區段：
 
 - 顯示該區段目前在 `main.md` 中的內容
@@ -90,10 +112,11 @@ description: >
 將確認的變更寫入 `ref_src/main.md`，遵循以下格式規範：
 
 - `## Section Name` 區段標題
-- `### Item Name` 區段內項目（專案、工作）
+- `### Item Name` 區段內項目（專案、工作、學歷）
 - `**Key:** Value` 單語言欄位
 - `**Key（zh-TW）：** Value` 和 `**Key（en）：** Value` 雙語欄位
 - 技能百分比格式：`Python (90%)`
+- Education 條目格式：`### 系所 (Department) | 學校 (School)` + `*起訖 (學位)*` + bullet list
 
 ### Step 5: 提供 Web Sync
 
@@ -107,21 +130,25 @@ description: >
 
 將 `main.md` 的變更同步到履歷用的 markdown 檔案：
 
-1. **讀取 `ref_src/resume_new.md`**（中文）和 `ref_src/resume_en.md`（英文）
+1. **讀取 `ref_src/resume_zh.md`**（中文）和 `ref_src/resume_en.md`（英文）
 2. **比對 `main.md` 的變更**，找出需要同步的區段：
    - Side Projects 變更 → 同步到兩份履歷的「個人專案與開源貢獻」區段
    - Core Skills 變更 → 同步到「核心技能」區段
    - Work Experience 變更 → 同步到「工作經歷」區段
    - Professional Summary 變更 → 同步到「專業摘要」區段
    - Header（職稱、聯絡）變更 → 同步到履歷標頭
-3. **更新 `ref_src/resume_new.md`** — 將中文內容寫入對應區段
+   - Education 變更 → 同步到「學歷 (Education)」區段（位於工作經歷之後、個人專案之前；若履歷尚未有此區段，需一併新增）
+3. **更新 `ref_src/resume_zh.md`** — 將中文內容寫入對應區段
 4. **更新 `ref_src/resume_en.md`** — 翻譯為英文寫入對應區段
    - 翻譯注意事項：
      - 保持專業履歷語氣，使用主動動詞開頭（Led, Designed, Implemented...）
      - 公司名稱維持英文翻譯一致性
      - 技術名詞保持原文不翻譯
+     - 學校名稱維持英文翻譯一致性（如元智大學 → Yuan-Ze University、銘傳大學 → Ming Chuan University）
+     - 學位採英文簡寫（碩士 → MS、學士 → BS、博士 → PhD）
+     - 科系名稱使用通用英譯（如資訊工程 → Computer Science and Engineering）
 
-**注意：** 履歷 markdown 的格式與 `main.md` 不同 — 履歷版不含 `**Key（lang）：**` 雙語標記，而是純文本的履歷排版格式。每個專案包含：專案名、粗體副標題、專案概述、技術架構、主要成效（bullet list）、GitHub 連結。
+**注意：** 履歷 markdown 的格式與 `main.md` 不同 — 履歷版不含 `**Key（lang）：**` 雙語標記，而是純文本的履歷排版格式。每個專案包含：專案名、粗體副標題、專案概述、技術架構、主要成效（bullet list）、GitHub 連結。學歷條目包含：學校、系所、學位、起訖時間、備註 bullet list。
 
 ### Step 7: 產出 PDF
 
@@ -129,8 +156,8 @@ description: >
 
 ```bash
 # mdpdf 的 --output 參數不可靠，改用 mv
-npx mdpdf ref_src/resume_new.md
-mv ref_src/resume_new.pdf public/resume_zh.pdf
+npx mdpdf ref_src/resume_zh.md
+mv ref_src/resume_zh.pdf public/resume_zh.pdf
 
 npx mdpdf ref_src/resume_en.md
 mv ref_src/resume_en.pdf public/resume_en.pdf
@@ -143,7 +170,32 @@ mv ref_src/resume_en.pdf public/resume_en.pdf
 
 ### Step 8: 完成摘要
 
-輸出更新摘要，列出所有修改的檔案與變更內容。
+輸出更新摘要，列出所有修改的檔案與變更內容。建議格式：
+
+```
+履歷更新完成！本次變更：
+
+📝 SSOT：
+  - ref_src/main.md ✅
+
+📄 履歷 Markdown：
+  - ref_src/resume_zh.md ✅
+  - ref_src/resume_en.md ✅
+
+📑 PDF：
+  - public/resume_zh.pdf ✅ (xxx KB)
+  - public/resume_en.pdf ✅ (xxx KB)
+
+🎓 學歷異動：
+  - [有/無] — 若有，列出新增或修改的學歷條目（僅影響履歷，不同步到網站）
+
+🌐 網站同步：
+  - src/i18n/zh-TW.ts — [更新了 xxx]
+  - src/i18n/en.ts — [更新了 xxx]
+  - (其他有更動的 src/data/*.ts 檔案)
+
+💡 提醒：記得 commit 這些變更並重新部署網站。
+```
 
 ---
 
@@ -164,6 +216,7 @@ mv ref_src/resume_en.pdf public/resume_en.pdf
 | Contact | `src/i18n/zh-TW.ts`, `src/i18n/en.ts` | `contact.locationValue`, `contact.interest1`-`4` |
 | Professional Summary | — | 僅限履歷，不同步到網站 |
 | Work Experience | — | 僅限履歷，不同步到網站 |
+| Education | — | 僅限履歷，不同步到網站 |
 
 ### Sync 流程
 
@@ -196,5 +249,5 @@ mv ref_src/resume_en.pdf public/resume_en.pdf
 
 - `main.md` 是唯一的資料源，所有更新都先寫入 `main.md`，再透過 sync 推送到網站檔案
 - 網站檔案不應直接修改履歷相關資料，應透過此 skill 從 `main.md` 同步
-- Professional Summary 和 Work Experience 為純履歷內容，不同步到網站
+- Professional Summary、Work Experience 與 Education 為純履歷內容，不同步到網站
 - 此 skill 取代舊版 `update-resume` skill，以 SSOT 模式管理所有履歷資料

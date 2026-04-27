@@ -55,6 +55,21 @@ alex.chen@example.com | [GitHub](https://github.com/sample-user) | [LinkedIn](ht
 
 ---
 
+## 學歷
+
+### 範例大學 | 資訊工程學系（學士）
+*2013年 - 2017年*
+
+- 主修軟體工程與分散式系統，畢業專題以 Vue.js 與 Node.js 實作協作型任務管理平台
+- GPA 3.8 / 4.0，連續兩學期獲書卷獎
+
+### 範例高級中學 | 自然組
+*2010年 - 2013年*
+
+- 擔任資訊社副社長，主辦校內 Hackathon 與程式入門工作坊
+
+---
+
 ## 精選專案
 
 ### TaskBoard Pro — 團隊任務管理平台

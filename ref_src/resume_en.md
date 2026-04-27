@@ -55,6 +55,21 @@ Full-stack engineer with 8 years of software development experience, specializin
 
 ---
 
+## Education
+
+### Sample University | BS in Computer Science and Engineering
+*2013 - 2017*
+
+- Focused on Software Engineering and Distributed Systems; capstone project delivered a collaborative task-management platform with Vue.js and Node.js
+- GPA 3.8 / 4.0; received Dean's List honors for two consecutive semesters
+
+### Sample Senior High School | Science Track
+*2010 - 2013*
+
+- Served as Vice President of the Computer Science Club; organized campus hackathons and beginner programming workshops
+
+---
+
 ## Featured Projects
 
 ### TaskBoard Pro — Team Task Management Platform
