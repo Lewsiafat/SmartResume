@@ -10,6 +10,9 @@ const resumePdfLink = computed(() => {
   return `${import.meta.env.BASE_URL}${file}`
 })
 
+const avatarWebp = `${import.meta.env.BASE_URL}avatar/avatar-512.webp`
+const avatarPng = `${import.meta.env.BASE_URL}avatar/avatar-512.png`
+
 const typingTexts = computed(() => [
   t('hero.typingText1'),
   t('hero.typingText2'),
@@ -30,6 +33,19 @@ const scrollTo = (id: string) => {
     <div class="absolute -top-48 -right-48 w-[500px] h-[500px] rounded-full bg-primary-500/10 dark:bg-primary-500/20 blur-3xl pointer-events-none" />
 
     <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center animate-fade-in-up">
+      <!-- Avatar (auto-hides if /avatar/avatar-512.* not installed) -->
+      <picture class="block mx-auto w-40 h-40 mb-6">
+        <source :srcset="avatarWebp" type="image/webp" />
+        <img
+          :src="avatarPng"
+          :alt="t('hero.avatarAlt')"
+          width="160"
+          height="160"
+          class="w-full h-full rounded-full shadow-lg object-cover"
+          onerror="this.parentElement.style.display='none'"
+        />
+      </picture>
+
       <!-- Name -->
       <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-4 gradient-text">
         {{ t('hero.name') }}

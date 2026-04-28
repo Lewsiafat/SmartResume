@@ -16,6 +16,7 @@ export default {
     viewProjects: 'View My Projects',
     contactMe: 'Contact Me',
     downloadResume: 'Download Resume',
+    avatarAlt: 'Profile photo',
   },
   about: {
     title: 'About Me',
