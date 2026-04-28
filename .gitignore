@@ -43,3 +43,7 @@ public/avatar/avatar-*.png
 # LinkedIn profile drafts (personal output from /linkedin-suggest)
 ref_src/linkedin_profile.md
 ref_src/linkedin_profile-*.md
+
+# Generated OG images (build-time output)
+public/og-images/*.png
+!public/og-images/.gitkeep

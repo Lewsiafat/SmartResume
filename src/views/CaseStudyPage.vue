@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { marked } from 'marked'
 import { caseStudiesManifest } from '../data/case-studies-manifest'
+import { useOgMeta, type OgMeta } from '../composables/useOgMeta'
 
 const caseStudyModules = import.meta.glob<string>(
   '../../ref_src/case_studies/*.md',
@@ -18,6 +19,13 @@ const html = ref('')
 const notFound = ref(false)
 
 const projectId = computed(() => String(route.params.id))
+
+const ogMetaRef = ref<OgMeta>({
+  title: '',
+  description: '',
+  image: '/og-images/home-zh-TW.png',
+})
+useOgMeta(ogMetaRef)
 
 async function loadMarkdown() {
   const entry = caseStudiesManifest[projectId.value]
@@ -38,8 +46,16 @@ async function loadMarkdown() {
   }
   try {
     const raw = await caseStudyModules[key]()
+    const h1 = (raw.match(/^#\s+(.+)$/m)?.[1] || projectId.value).trim()
+    const firstPara = (raw.split(/^##\s+/m)[0].split('\n\n').find(p => !p.startsWith('#') && p.trim()) || '').slice(0, 200)
     html.value = await marked.parse(raw)
     notFound.value = false
+    ogMetaRef.value = {
+      title: `${h1} — Case Study`,
+      description: firstPara || t('caseStudy.back'),
+      image: `/og-images/case-${projectId.value}.png`,
+      url: `${location.origin}/projects/${projectId.value}`,
+    }
   } catch {
     notFound.value = true
     html.value = ''
