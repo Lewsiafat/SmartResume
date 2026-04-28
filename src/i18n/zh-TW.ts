@@ -16,6 +16,7 @@ export default {
     viewProjects: '查看作品',
     contactMe: '聯絡我',
     downloadResume: '下載履歷',
+    avatarAlt: '個人頭像',
   },
   about: {
     title: '關於我',
