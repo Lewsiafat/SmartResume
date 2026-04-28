@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { contact } from '../../data/contact'
 import { useScrollReveal } from '../../composables/useScrollReveal'
+import { trackEvent } from '../../analytics'
 
 const { t } = useI18n()
 
@@ -26,6 +27,11 @@ const form = ref({
 const status = ref<'idle' | 'sending' | 'success' | 'error'>('idle')
 
 const handleSubmit = async () => {
+  trackEvent('cta_click_contact', {
+    has_message: form.value.message.length > 0,
+    has_email: form.value.email.length > 0,
+  })
+
   if (!FORMSPREE_ENDPOINT) {
     // Formspree not configured — show a helpful message
     status.value = 'error'

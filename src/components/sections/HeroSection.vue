@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useTyping } from '../../composables/useTyping'
+import { trackEvent } from '../../analytics'
 
 const { t, locale } = useI18n()
 
@@ -9,6 +10,10 @@ const resumePdfLink = computed(() => {
   const file = locale.value === 'en' ? 'resume_en.pdf' : 'resume_zh.pdf'
   return `${import.meta.env.BASE_URL}${file}`
 })
+
+function onResumeClick(lang: 'zh' | 'en') {
+  trackEvent('cta_click_resume_pdf', { lang, source: 'hero' })
+}
 
 const avatarWebp = `${import.meta.env.BASE_URL}avatar/avatar-512.webp`
 const avatarPng = `${import.meta.env.BASE_URL}avatar/avatar-512.png`
@@ -70,7 +75,7 @@ const scrollTo = (id: string) => {
         <a @click.prevent="scrollTo('contact')" href="#contact" class="btn-secondary cursor-pointer">
           {{ t('hero.contactMe') }} →
         </a>
-        <a :href="resumePdfLink" target="_blank" rel="noopener noreferrer" class="btn-secondary flex items-center gap-2">
+        <a :href="resumePdfLink" @click="onResumeClick(locale === 'en' ? 'en' : 'zh')" target="_blank" rel="noopener noreferrer" class="btn-secondary flex items-center gap-2">
           <span>📄</span> {{ t('hero.downloadResume') }}
         </a>
       </div>

@@ -22,3 +22,9 @@ export function initAnalytics() {
   window.gtag('js', new Date())
   window.gtag('config', GA_ID)
 }
+
+export function trackEvent(name: string, params?: Record<string, unknown>) {
+  if (!GA_ID) return
+  if (typeof window === 'undefined' || !window.gtag) return
+  window.gtag('event', name, params || {})
+}

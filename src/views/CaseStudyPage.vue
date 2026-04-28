@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { computed, ref, onMounted, watch } from 'vue'
+import { computed, ref, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { marked } from 'marked'
 import { caseStudiesManifest } from '../data/case-studies-manifest'
 import { useOgMeta, type OgMeta } from '../composables/useOgMeta'
+import { trackEvent } from '../analytics'
 
 const caseStudyModules = import.meta.glob<string>(
   '../../ref_src/case_studies/*.md',
@@ -50,6 +51,7 @@ async function loadMarkdown() {
     const firstPara = (raw.split(/^##\s+/m)[0].split('\n\n').find(p => !p.startsWith('#') && p.trim()) || '').slice(0, 200)
     html.value = await marked.parse(raw)
     notFound.value = false
+    trackEvent('case_study_view', { project_id: projectId.value, locale: wantedLocale })
     ogMetaRef.value = {
       title: `${h1} — Case Study`,
       description: firstPara || t('caseStudy.back'),
@@ -62,8 +64,27 @@ async function loadMarkdown() {
   }
 }
 
-onMounted(loadMarkdown)
+const halfwayFired = ref(false)
+
+function onScroll() {
+  if (halfwayFired.value) return
+  const total = document.documentElement.scrollHeight - window.innerHeight
+  if (total <= 0) return
+  const pct = window.scrollY / total
+  if (pct >= 0.5) {
+    halfwayFired.value = true
+    trackEvent('case_study_time_50pct', { project_id: projectId.value })
+  }
+}
+
+onMounted(() => {
+  loadMarkdown()
+  window.addEventListener('scroll', onScroll, { passive: true })
+})
+onUnmounted(() => window.removeEventListener('scroll', onScroll))
+
 watch([projectId, locale], loadMarkdown)
+watch(projectId, () => { halfwayFired.value = false })
 </script>
 
 <template>

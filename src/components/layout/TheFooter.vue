@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { contact } from '../../data/contact'
+import { trackEvent } from '../../analytics'
 
 const { t } = useI18n()
 
 const buildSha = __BUILD_SHA__
 const buildTime = __BUILD_TIME__
+
+function onCta(name: string, extra?: Record<string, unknown>) {
+  trackEvent(name, extra)
+}
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -20,6 +25,7 @@ const scrollToTop = () => {
         <div class="flex items-center space-x-6">
           <a
             :href="contact.github.url"
+            @click="onCta('cta_click_github', { source: 'footer' })"
             target="_blank"
             rel="noopener noreferrer"
             class="text-secondary-500 dark:text-accent-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
@@ -31,6 +37,7 @@ const scrollToTop = () => {
           </a>
           <a
             :href="contact.linkedin.url"
+            @click="onCta('cta_click_linkedin', { source: 'footer' })"
             target="_blank"
             rel="noopener noreferrer"
             class="text-secondary-500 dark:text-accent-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
