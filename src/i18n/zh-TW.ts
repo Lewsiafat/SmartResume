@@ -37,6 +37,7 @@ export default {
     filterTool: '工具',
     viewCode: 'GitHub',
     liveDemo: '線上展示',
+    readCaseStudy: '深度解析 →',
     taskBoard: {
       title: 'TaskBoard Pro',
       subtitle: '團隊任務管理平台',
@@ -114,5 +115,10 @@ export default {
   language: {
     'zh-TW': '繁體中文',
     en: 'English',
+  },
+  caseStudy: {
+    back: '← 返回',
+    notFound: '找不到此 Case Study',
+    backToProjects: '回到專案列表',
   },
 }
