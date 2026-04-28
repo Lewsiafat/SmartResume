@@ -5,6 +5,7 @@ import ProjectCard from '../ui/ProjectCard.vue'
 import { projects } from '../../data/projects'
 import type { ProjectCategory } from '../../types'
 import { useScrollReveal } from '../../composables/useScrollReveal'
+import { caseStudiesManifest } from '../../data/case-studies-manifest'
 
 const { t } = useI18n()
 const activeFilter = ref<ProjectCategory>('All')
@@ -52,6 +53,7 @@ const filteredProjects = computed(() => {
           v-for="project in filteredProjects"
           :key="project.id"
           :project="project"
+          :has-case-study="!!caseStudiesManifest[project.id]"
         />
       </div>
     </div>

@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { RouterLink } from 'vue-router'
 import type { Project } from '../../types'
 
-defineProps<{
-  project: Project
-}>()
+withDefaults(
+  defineProps<{
+    project: Project
+    hasCaseStudy?: boolean
+  }>(),
+  { hasCaseStudy: false },
+)
 
 const { t } = useI18n()
 </script>
@@ -64,6 +69,13 @@ const { t } = useI18n()
         >
           {{ t('projects.liveDemo') }} →
         </a>
+        <RouterLink
+          v-if="hasCaseStudy"
+          :to="`/projects/${project.id}`"
+          class="text-primary-500 hover:text-accent-500 font-semibold text-sm transition-colors"
+        >
+          {{ t('projects.readCaseStudy') }}
+        </RouterLink>
       </div>
     </div>
   </div>
