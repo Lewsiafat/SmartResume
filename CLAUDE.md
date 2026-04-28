@@ -88,6 +88,7 @@ All skills are stored in `.claude/skills/` and `.agent/skills/` (identical conte
 | `job-apply` | `/job-apply` | Create `apply/*` branch, customize resume for target job |
 | `job-release` | `/job-release` | Archive application package to `output/releases/` |
 | `theme-extractor` | `/theme-extractor` | Extract color palette from URL/screenshot and apply |
+| `linkedin-suggest` | `/linkedin-suggest` | Bilingual LinkedIn profile draft from main.md SSOT |
 
 ### Pipeline Flow
 

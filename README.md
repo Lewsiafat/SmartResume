@@ -191,6 +191,7 @@ flowchart TD
 | `job-apply` | `/job-apply` | 建立 `apply/*` 分支，針對目標職缺客製化履歷與網站 |
 | `job-release` | `/job-release` | 封存完整應徵資料包（PDF、JD 分析、Cover Letter、網站建置） |
 | `theme-extractor` | `/theme-extractor` | 從網站 URL 或截圖萃取 color palette 並套用到網站 |
+| `linkedin-suggest` | `/linkedin-suggest` | 從 `main.md` SSOT 產生雙語 LinkedIn profile 草稿 |
 
 > 專案另含通用工具類 skill（`pdf`、`docx`、`canvas-design`、`frontend-design`、`theme-factory`、`playwright-skill`），存放於同一目錄下。
 
