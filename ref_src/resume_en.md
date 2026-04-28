@@ -5,6 +5,8 @@ pdf_options:
 stylesheet: []
 ---
 
+<img src="../public/avatar/avatar-256.png" width="96" style="border-radius:50%; float:right; margin-left:16px;" />
+
 # Alex Chen
 
 **Full-Stack Developer | AI Enthusiast | Open Source Contributor**
