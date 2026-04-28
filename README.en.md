@@ -130,6 +130,7 @@ All skills are stored in two directories with identical content, so different AI
 | `job-apply` | `/job-apply` | Create `apply/*` branch, customize resume and website for a target job |
 | `job-release` | `/job-release` | Archive complete application package (PDF, JD analysis, cover letter, website build) |
 | `theme-extractor` | `/theme-extractor` | Extract color palette from URL or screenshot and apply to website |
+| `linkedin-suggest` | `/linkedin-suggest` | Generate a bilingual LinkedIn profile draft from `main.md` SSOT |
 
 > The project also includes general-purpose utility skills (`pdf`, `docx`, `canvas-design`, `frontend-design`, `theme-factory`, `playwright-skill`) in the same directories.
 
