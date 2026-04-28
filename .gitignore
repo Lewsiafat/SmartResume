@@ -32,3 +32,6 @@ npm-debug.log*
 
 # Temp / progress checkpoints
 temp/
+
+# Auto-generated case study manifest
+src/data/case-studies-manifest.ts

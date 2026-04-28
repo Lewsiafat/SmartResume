@@ -59,6 +59,8 @@ npm run build
 # 部署到 GitHub Pages / Vercel / VPS（見部署說明）
 ```
 
+- (Optional) Want a deep dive on a project? Run `/add-case-study {projectId}` to scaffold a Case Study page.
+
 ---
 
 ## 📖 使用情境

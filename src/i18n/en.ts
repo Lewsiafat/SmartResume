@@ -37,6 +37,7 @@ export default {
     filterTool: 'Tool',
     viewCode: 'GitHub',
     liveDemo: 'Live Demo',
+    readCaseStudy: 'Read Case Study →',
     taskBoard: {
       title: 'TaskBoard Pro',
       subtitle: 'Team Task Management Platform',
@@ -114,5 +115,10 @@ export default {
   language: {
     'zh-TW': '繁體中文',
     en: 'English',
+  },
+  caseStudy: {
+    back: '← Back',
+    notFound: 'Case Study not found',
+    backToProjects: 'Back to projects',
   },
 }

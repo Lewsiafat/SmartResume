@@ -197,6 +197,14 @@ mv ref_src/resume_en.pdf public/resume_en.pdf
 💡 提醒：記得 commit 這些變更並重新部署網站。
 ```
 
+### Step 9: Mention Case Study (passive)
+
+After successfully adding/updating a project, print **once**:
+
+> 💡 想為「{ProjectTitle}」加 case study？執行 `/add-case-study {projectId}`（可選，跳過完全 OK）
+
+Do **not** ask y/N. Do **not** loop back. Just inform and exit.
+
 ---
 
 ## Web Sync Logic

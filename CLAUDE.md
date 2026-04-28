@@ -106,6 +106,23 @@ All skills are stored in `.claude/skills/` and `.agent/skills/` (identical conte
 - **Branch strategy**: `master` stays generic; `apply/*` branches hold per-job customization
 - **Design spec**: `docs/superpowers/specs/2026-04-09-resume-single-source-of-truth-design.md`
 
+### Case Study (Optional Deep-Dive Pages)
+
+Each project in `src/data/projects.ts` may optionally have a Case Study deep-dive:
+
+- File location: `ref_src/case_studies/{projectId}.{en|zh-TW}.md`
+- Auto-detection: build-time scan generates `src/data/case-studies-manifest.ts`
+- UI: ProjectCard shows "Read Case Study →" link only when manifest contains the id
+- Route: `/projects/:id`
+- Scaffolding: run `/add-case-study {projectId}` to copy from template
+
+Skipping case studies is fine — projects without one show normal cards. The
+`/update-resume` skill will not ask about case studies; it only mentions the
+option after a project update.
+
+Template: `ref_src/case_studies/_template.md`
+Examples: `ref_src/case_studies/example_taskBoard.{en,zh-TW}.md`
+
 ### Quick Start (Using as Template)
 
 1. Fork this repository
