@@ -1,10 +1,3 @@
----
-pdf_options:
-  format: A4
-  margin: 20mm
-stylesheet: []
----
-
 <img src="../public/avatar/avatar-256.png" width="96" style="border-radius:50%; float:right; margin-left:16px;" />
 
 # Alex Chen
