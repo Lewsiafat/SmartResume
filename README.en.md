@@ -12,10 +12,15 @@ Designed for AI-fluent users: not just a static site, but a full suite of AI Ski
 
 ## ✨ Features
 
-- 🌐 **Portfolio Website** — Vue 3 + Tailwind CSS, dark theme, bilingual (zh-TW / EN), typing animation
+- 🌐 **Portfolio Website** — Vue 3 + Vue Router + Tailwind CSS, dark theme, bilingual (zh-TW / EN), typing animation
 - 📋 **SSOT Resume Management** — `ref_src/main.md` as single source of truth, sync to website + PDF in one step
+- 📖 **Case Study Deep-dive Pages** — Write per-project markdown deep-dives that auto-wire to `/projects/:id` and ProjectCard CTA
+- 🖼️ **OG / Twitter dynamic images** — Build-time Puppeteer renders per-route 1200×630 share images
+- 🧑 **Avatar pipeline** — `/install-avatar` produces 128/256/512 multi-size WebP+PNG in one command
+- 📈 **GA4 custom events** — Built-in tracking for case-study reads, CTA clicks, and share-referrer attribution
 - 🎯 **JD Match Analysis** — Auto-compare job descriptions against your resume with match scoring
 - ✉️ **Cover Letter Generation** — Customized cover letters (Chinese + English) based on JD analysis
+- 💼 **LinkedIn Draft Generator** — Bilingual LinkedIn profile copy from the same SSOT
 - 📦 **Job Application Workflow** — End-to-end: analyze → apply → archive
 - 🎨 **Theme Customization** — Extract color palettes from any design reference
 
@@ -131,6 +136,8 @@ All skills are stored in two directories with identical content, so different AI
 | `job-release` | `/job-release` | Archive complete application package (PDF, JD analysis, cover letter, website build) |
 | `theme-extractor` | `/theme-extractor` | Extract color palette from URL or screenshot and apply to website |
 | `linkedin-suggest` | `/linkedin-suggest` | Generate a bilingual LinkedIn profile draft from `main.md` SSOT |
+| `add-case-study` | `/add-case-study {projectId}` | Scaffold a Case Study deep-dive page from template |
+| `install-avatar` | `/install-avatar` | sharp-based multi-size avatar installer (128/256/512 WebP+PNG); syncs `main.md` Avatar field |
 
 > The project also includes general-purpose utility skills (`pdf`, `docx`, `canvas-design`, `frontend-design`, `theme-factory`, `playwright-skill`) in the same directories.
 
@@ -141,9 +148,16 @@ All skills are stored in two directories with identical content, so different AI
 ```
 SmartResume/
 ├── src/                    # Vue 3 frontend source
+│   ├── views/              # HomePage / CaseStudyPage (vue-router)
+│   ├── router/             # vue-router setup
+│   ├── composables/        # theme, locale, typing, useOgMeta
+│   ├── data/               # projects, skills, techStack, stats, case-studies-manifest
+│   └── analytics.ts        # GA4 trackEvent wrapper (no-op when VITE_GA_ID unset)
 ├── ref_src/                # Resume data (SSOT)
-│   └── main.md             # ⭐ Single source of truth
-├── public/                 # resume_zh.pdf, resume_en.pdf
+│   ├── main.md             # ⭐ Single source of truth
+│   └── case_studies/       # Per-project deep-dive markdown (_template + {projectId}.{en|zh-TW}.md)
+├── public/                 # resume_zh.pdf, resume_en.pdf, avatar/, og/
+├── scripts/                # generate-case-studies-manifest.ts, generate-og-images.ts, install-avatar.ts, og-templates/
 ├── output/                 # AI Skills output
 │   ├── jd-analysis/        # JD match reports
 │   ├── cover-letters/      # Generated cover letters
@@ -158,10 +172,14 @@ SmartResume/
 
 | Layer | Tech |
 |-------|------|
-| Framework | Vue 3 + Composition API |
-| Styling | Tailwind CSS (dark mode) |
+| Framework | Vue 3 + Composition API + `<script setup>` |
+| Routing | vue-router (`/projects/:id` for case-study deep-dives) |
+| Markdown rendering | marked + @tailwindcss/typography |
+| Styling | Tailwind CSS (dark mode class strategy) |
 | i18n | vue-i18n (zh-TW / EN) |
-| Build | Vite + TypeScript |
+| Build | Vite + TypeScript + tsx (running build scripts) |
+| Image processing | sharp (avatar) / Puppeteer (build-time OG image generation) |
+| Analytics | Google Analytics 4 (custom-events wrapper) |
 | AI Skills | Claude Code / General Agent / Gemini CLI |
 
 ---

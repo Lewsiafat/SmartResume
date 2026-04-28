@@ -12,10 +12,15 @@
 
 ## ✨ 功能特色
 
-- 🌐 **個人 Portfolio 網站** — Vue 3 + Tailwind CSS，暗色主題，中英雙語切換，typing 動畫
+- 🌐 **個人 Portfolio 網站** — Vue 3 + Vue Router + Tailwind CSS，暗色主題，中英雙語切換，typing 動畫
 - 📋 **SSOT 履歷管理** — `ref_src/main.md` 為單一資料源，一次更新同步網站 + PDF
+- 📖 **Case Study 深度頁** — 為任一專案撰寫 markdown 深度頁，自動對應 `/projects/:id` 路由與 ProjectCard CTA
+- 🖼️ **OG / Twitter 動態圖** — Build 時用 Puppeteer 產生 per-route 1200×630 分享圖
+- 🧑 **頭像管理** — `/install-avatar` 一鍵產出 128/256/512 多尺寸 WebP+PNG
+- 📈 **GA4 自訂事件** — 內建 case study 閱讀、CTA click、分享來源等追蹤
 - 🎯 **JD 比對分析** — 自動比對職缺與你的履歷，輸出匹配度報告
 - ✉️ **Cover Letter 自動產生** — 依 JD 客製化中英文求職信
+- 💼 **LinkedIn 草稿產生** — 從 SSOT 產出雙語 LinkedIn profile
 - 📦 **求職流程管理** — 從分析職缺到封存完整應徵包一條龍
 - 🎨 **主題客製化** — 從任何設計截圖萃取 color palette 套用到網站
 
@@ -192,6 +197,8 @@ flowchart TD
 | `job-release` | `/job-release` | 封存完整應徵資料包（PDF、JD 分析、Cover Letter、網站建置） |
 | `theme-extractor` | `/theme-extractor` | 從網站 URL 或截圖萃取 color palette 並套用到網站 |
 | `linkedin-suggest` | `/linkedin-suggest` | 從 `main.md` SSOT 產生雙語 LinkedIn profile 草稿 |
+| `add-case-study` | `/add-case-study {projectId}` | 從 template 為指定專案產出 Case Study 深度頁草稿 |
+| `install-avatar` | `/install-avatar` | sharp 多尺寸頭像安裝（128/256/512 WebP+PNG），同步 `main.md` Avatar 欄位 |
 
 > 專案另含通用工具類 skill（`pdf`、`docx`、`canvas-design`、`frontend-design`、`theme-factory`、`playwright-skill`），存放於同一目錄下。
 
@@ -203,17 +210,28 @@ flowchart TD
 SmartResume/
 ├── src/                    # Vue 3 前端原始碼
 │   ├── components/         # 版面與頁面區塊元件
-│   ├── composables/        # 主題、語系、typing 動畫
+│   ├── composables/        # 主題、語系、typing 動畫、useOgMeta
+│   ├── views/              # HomePage / CaseStudyPage（vue-router）
+│   ├── router/             # vue-router 設定
 │   ├── i18n/               # 繁中 / 英文翻譯
-│   ├── data/               # 專案、技能、技術棧、統計資料
+│   ├── data/               # 專案、技能、技術棧、統計、case-studies-manifest
+│   ├── analytics.ts        # GA4 trackEvent wrapper（VITE_GA_ID 未設則 no-op）
 │   └── types/              # TypeScript 型別定義
 ├── ref_src/                # 履歷資料（SSOT）
 │   ├── main.md             # ⭐ 單一資料源，所有履歷內容從此同步
 │   ├── resume_zh.md        # 中文履歷 Markdown（PDF 來源）
-│   └── resume_en.md        # 英文履歷 Markdown（PDF 來源）
+│   ├── resume_en.md        # 英文履歷 Markdown（PDF 來源）
+│   └── case_studies/       # 專案深度頁 markdown（_template + {projectId}.{en|zh-TW}.md）
 ├── public/                 # 靜態資源
 │   ├── resume_zh.pdf       # 中文履歷 PDF
-│   └── resume_en.pdf       # 英文履歷 PDF
+│   ├── resume_en.pdf       # 英文履歷 PDF
+│   ├── avatar/             # 多尺寸頭像（/install-avatar 產出）
+│   └── og/                 # build 時產生的 OG 分享圖
+├── scripts/                # build / install 腳本
+│   ├── generate-case-studies-manifest.ts
+│   ├── generate-og-images.ts
+│   ├── install-avatar.ts
+│   └── og-templates/       # OG 圖 HTML 模板
 ├── output/                 # AI Skills 輸出
 │   ├── jd-analysis/        # JD 比對分析報告
 │   ├── cover-letters/      # 客製化求職信
@@ -231,9 +249,13 @@ SmartResume/
 | 層級 | 技術 |
 |------|------|
 | 前端框架 | Vue 3 + Composition API + `<script setup>` |
+| 路由 | vue-router（`/projects/:id` case study 深度頁）|
+| Markdown 渲染 | marked + @tailwindcss/typography |
 | 樣式 | Tailwind CSS（dark mode class 策略） |
 | 語系 | vue-i18n（繁中 / 英） |
-| 建構工具 | Vite + TypeScript |
+| 建構工具 | Vite + TypeScript + tsx（執行 build 腳本）|
+| 影像處理 | sharp（avatar）/ Puppeteer（build-time OG image）|
+| Analytics | Google Analytics 4（自訂事件 wrapper） |
 | AI Skills | Claude Code / 通用 Agent / Gemini CLI |
 
 ---

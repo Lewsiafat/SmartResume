@@ -89,6 +89,8 @@ All skills are stored in `.claude/skills/` and `.agent/skills/` (identical conte
 | `job-release` | `/job-release` | Archive application package to `output/releases/` |
 | `theme-extractor` | `/theme-extractor` | Extract color palette from URL/screenshot and apply |
 | `linkedin-suggest` | `/linkedin-suggest` | Bilingual LinkedIn profile draft from main.md SSOT |
+| `add-case-study` | `/add-case-study {projectId}` | Scaffold a Case Study deep-dive page from template |
+| `install-avatar` | `/install-avatar` | sharp-based multi-size avatar installer (128/256/512 WebP+PNG) |
 
 ### Pipeline Flow
 

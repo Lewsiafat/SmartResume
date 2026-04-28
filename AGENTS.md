@@ -88,6 +88,9 @@ All skills are stored in `.claude/skills/` and `.agent/skills/` (identical conte
 | `job-apply` | `/job-apply` | Create `apply/*` branch, customize resume for target job |
 | `job-release` | `/job-release` | Archive application package to `output/releases/` |
 | `theme-extractor` | `/theme-extractor` | Extract color palette from URL/screenshot and apply |
+| `linkedin-suggest` | `/linkedin-suggest` | Bilingual LinkedIn profile draft from main.md SSOT |
+| `add-case-study` | `/add-case-study {projectId}` | Scaffold a Case Study deep-dive page from template |
+| `install-avatar` | `/install-avatar` | sharp-based multi-size avatar installer (128/256/512 WebP+PNG) |
 
 ### Pipeline Flow
 
@@ -106,6 +109,23 @@ All skills are stored in `.claude/skills/` and `.agent/skills/` (identical conte
 - **Branch strategy**: `master` stays generic; `apply/*` branches hold per-job customization
 - **Design spec**: `docs/superpowers/specs/2026-04-09-resume-single-source-of-truth-design.md`
 
+### Case Study (Optional Deep-Dive Pages)
+
+Each project in `src/data/projects.ts` may optionally have a Case Study deep-dive:
+
+- File location: `ref_src/case_studies/{projectId}.{en|zh-TW}.md`
+- Auto-detection: build-time scan generates `src/data/case-studies-manifest.ts`
+- UI: ProjectCard shows "Read Case Study →" link only when manifest contains the id
+- Route: `/projects/:id`
+- Scaffolding: run `/add-case-study {projectId}` to copy from template
+
+Skipping case studies is fine — projects without one show normal cards. The
+`/update-resume` skill will not ask about case studies; it only mentions the
+option after a project update.
+
+Template: `ref_src/case_studies/_template.md`
+Examples: `ref_src/case_studies/example_taskBoard.{en,zh-TW}.md`
+
 ### Quick Start (Using as Template)
 
 1. Fork this repository
@@ -121,4 +141,24 @@ All skills are stored in `.claude/skills/` and `.agent/skills/` (identical conte
 - Skill bars: Edit `src/data/skills.ts`
 - Tech stack: Edit `src/data/techStack.ts` (sync i18n translation files)
 - GitHub stats: Edit `src/data/stats.ts` (sync i18n translation files)
-- Contact form: Currently a UI placeholder, can integrate Formspree or similar services
+- Contact form: Uses Formspree. Set `VITE_FORMSPREE_ID` in `.env.local` (get a free form ID at [formspree.io](https://formspree.io)). When unset the form shows an error prompting users to email directly — no submission is attempted.
+
+## Environment Variables
+
+Optional `.env.local` at project root (gitignored):
+
+| Variable | Purpose |
+|----------|---------|
+| `VITE_GA_ID` | Google Analytics 4 measurement ID (`G-XXXXXXXXXX`). Read at runtime by [src/analytics.ts](src/analytics.ts); when unset the gtag script is not injected at all. |
+| `VITE_FORMSPREE_ID` | [Formspree](https://formspree.io) form ID — the `<id>` part of `formspree.io/f/<id>`. Used by [ContactSection.vue](src/components/sections/ContactSection.vue). Absent → contact form shows a friendly error instead of submitting. |
+| `VITE_BASE` | **Build-time only.** Consumed by [vite.config.ts](vite.config.ts) to set the Vite `base` option for subpath deployments (e.g. `/smartresume/`). Defaults to `/` when unset. Example: `VITE_BASE=/smartresume/ npm run build`. |
+
+## Deployment
+
+Fork users: start with [docs/deploy-options.md](docs/deploy-options.md) for step-by-step guides covering Vercel, Netlify, Cloudflare Pages, and GitHub Pages. Each doc ships in zh (`.md`) and en (`.en.md`).
+
+For self-hosted VPS, two options:
+- **GitHub Actions:** `.github/workflows/deploy.yml` (trigger: `workflow_dispatch`) — SSH deploy key in GitHub Secrets
+- **Local build + rsync:** `npm run deploy` (driven by `scripts/deploy.sh`, reads `.env` and/or `.env.local`) — no CI, deploys from your own machine
+
+Setup details (SSH keys, Secrets / `.env.local`, Nginx server block, optional `/var/www/smartresume` symlink) in [docs/deployment.md](docs/deployment.md) / [docs/deployment.en.md](docs/deployment.en.md).

@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.4.0] - 2026-04-28
+
+P1 roadmap sprint — five plans landed in one minor release. Spec lives in `docs/superpowers/specs/2026-04-28-p1-roadmap-1-2week-sprint-design.md`; the 5 implementation plans are tracked in `specs/road-map_p1.md`.
+
+### Added
+- **Case Study deep-dive pages** — Vue Router (`/projects/:id`) with new `src/views/CaseStudyPage.vue` (111 lines) and extracted `src/views/HomePage.vue` (54 lines). Markdown rendered via `marked`, bundled through `import.meta.glob` so files actually ship in `vite build` output (the `@vite-ignore` dynamic-import path silently dropped them). Auto-detection: `scripts/generate-case-studies-manifest.ts` (prebuild hook) scans `ref_src/case_studies/{projectId}.{en|zh-TW}.md` and emits `src/data/case-studies-manifest.ts`; `ProjectCard.vue` renders the "Read Case Study →" link only when the manifest contains the id. Projects without a case study show normal cards. Bundled with bilingual `_template.md` and `example_taskBoard.{en,zh-TW}.md`. New deps: `vue-router@4.6`, `marked@15.0`, `tsx@4.21`, `@tailwindcss/typography@0.5`
+- **`/add-case-study {projectId}` skill** — scaffolds case-study markdown for both languages by copying from `_template.md`. Mirrored across `.claude/skills/add-case-study/` and `.agent/skills/add-case-study/`. Discovery surfaced through five channels (Quick Start hint, CLAUDE.md section, README mention, post-`/update-resume` prompt, ProjectCard CTA when present)
+- **Open Graph dynamic images** — build-time Puppeteer generator (`scripts/generate-og-images.ts`) renders three HTML templates (`home.html`, `case-study.html`, `about.html` in `scripts/og-templates/`) into per-route 1200×630 PNGs. Wired into the build chain (`gen:manifest → vue-tsc → vite build → gen:og`). Per-route `og:image` / Twitter meta tags via new `src/composables/useOgMeta.ts` composable, mounted in `App.vue`. Adds `puppeteer@24.42` dev dep
+- **GA4 custom events** — `src/analytics.ts` gains a `trackEvent(name, params)` wrapper that no-ops when `VITE_GA_ID` is unset. New events: `case_study_view`, `case_study_time_50pct` (50% scroll-depth on case-study pages), `og_share_referrer` (fired on home mount when `document.referrer` matches social hosts), and four `cta_click_*` variants (`resume_pdf`, `github`, `linkedin`, `contact`) wired through `HeroSection`, `ProjectCard`, `ContactSection`, and `TheFooter`
+- **`/install-avatar` skill** — sharp-based multi-size resizer (`scripts/install-avatar.ts`, exposed as `npm run avatar:install`). Reads a single source image and produces `public/avatar/avatar-{128,256,512}.{webp,png}`, updates `ref_src/main.md`'s `**Avatar:**` field, and offers to regenerate resume PDFs. `HeroSection.vue` consumes the assets via a `<picture>` element with WebP source + PNG fallback. New dev dep: `sharp@0.34.5`
+- **`/linkedin-suggest` skill** — bilingual hybrid skill that drafts a full LinkedIn profile (Headline / About / Experience / Skills / Featured / Open to Work) in one shot from `ref_src/main.md`, then offers per-field interactive refinement via `AskUserQuestion`. Mirrored in `.claude/` and `.agent/`
+- **`ref_src/case_studies/`** — new directory housing case-study source markdown plus `_template.md` and `example_taskBoard.{en,zh-TW}.md`
+
+### Changed
+- **`package.json` build chain** — `dev` and `build` now prefix `npm run gen:manifest`; `build` suffixes `npm run gen:og`. Three new scripts: `gen:manifest`, `gen:og`, `avatar:install`
+- **`src/App.vue`** — routes through `<router-view>` instead of inlining the home layout; `src/main.ts` registers the router
+- **`HeroSection.vue`** — avatar block (`<picture>` with WebP+PNG fallback) added; `i18n` keys extended in both `zh-TW.ts` and `en.ts`
+- **`ProjectsSection.vue`, `ProjectCard.vue`, `ContactSection.vue`, `TheFooter.vue`** — wired CTA tracking calls into existing buttons
+
+### Fixed
+- **Resume PDF YAML frontmatter leak** — `ref_src/resume_zh.md` / `ref_src/resume_en.md` carried unparsed YAML frontmatter that mdpdf 3.x rendered as visible text at the top of every PDF. Frontmatter stripped; both PDFs regenerated. Embedded avatar now lands cleanly at the top of both language versions
+- **Case-study markdown missing from production bundle** — first cut used `@vite-ignore` dynamic imports, which prevented Vite from bundling the markdown content. Switched to `import.meta.glob`; `vite preview` and prod deploys now render case-study pages correctly
+
 ## [1.3.3] - 2026-04-28
 
 ### Added
