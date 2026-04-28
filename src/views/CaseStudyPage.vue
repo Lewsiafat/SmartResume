@@ -5,6 +5,11 @@ import { useI18n } from 'vue-i18n'
 import { marked } from 'marked'
 import { caseStudiesManifest } from '../data/case-studies-manifest'
 
+const caseStudyModules = import.meta.glob<string>(
+  '../../ref_src/case_studies/*.md',
+  { query: '?raw', import: 'default' }
+)
+
 const route = useRoute()
 const router = useRouter()
 const { locale, t } = useI18n()
@@ -24,12 +29,16 @@ async function loadMarkdown() {
   const wantedLocale = entry.locales.includes(locale.value as 'en' | 'zh-TW')
     ? (locale.value as 'en' | 'zh-TW')
     : entry.locales[0]
+  const fileName = `${projectId.value}.${wantedLocale}.md`
+  const key = Object.keys(caseStudyModules).find(k => k.endsWith('/' + fileName))
+  if (!key) {
+    notFound.value = true
+    html.value = ''
+    return
+  }
   try {
-    const mod = await import(
-      /* @vite-ignore */
-      `@case-studies/${projectId.value}.${wantedLocale}.md?raw`
-    )
-    html.value = await marked.parse(mod.default)
+    const raw = await caseStudyModules[key]()
+    html.value = await marked.parse(raw)
     notFound.value = false
   } catch {
     notFound.value = true
