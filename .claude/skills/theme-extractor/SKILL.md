@@ -19,7 +19,7 @@ Extract color palettes from any website or choose from preset themes, preview th
 There are three ways to get a theme:
 
 1. **URL extraction** — scrape a live website's CSS to pull its actual colors
-2. **Theme-factory presets** — pick from 10 curated themes in `~/.claude/skills/theme-factory/themes/`
+2. **Theme-factory presets** — pick from 10 curated themes in `.claude/skills/theme-factory/themes/` (bundled in this project)
 3. **Description** — user describes what they want, you generate a matching palette
 
 ## Workflow
@@ -67,7 +67,7 @@ Use color theory to generate the full shade range (50-900) from the extracted ba
 
 ### Step 2b: Use Theme-Factory Preset
 
-Read the chosen theme from `~/.claude/skills/theme-factory/themes/<theme-name>.md`.
+Read the chosen theme from `.claude/skills/theme-factory/themes/<theme-name>.md` (bundled in this project, same convention as `playwright-skill`).
 
 Available themes:
 1. Ocean Depths — deep navy + teal (#1a2332, #2d8b8b, #a8dadc, #f1faee)
