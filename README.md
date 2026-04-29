@@ -57,6 +57,8 @@ npm install
 
 透過互動式 Q&A 填寫個人資訊，AI 自動同步至所有網站檔案並產生履歷 PDF。
 
+> 💡 主選單選「**更新 Site Meta**」可以一併設定網站標題、SEO 描述、`og:url`、社群分享預覽（Facebook / Twitter / LinkedIn / Slack 等 crawler 看到的就是 `index.html` 的靜態 OG meta tags，沒跑這步會顯示 template demo 內容）。
+
 **Step 3：進階個人化（推薦）**
 
 填完履歷後，可以一次跑完三個輔助 skills 把網站打磨到位：

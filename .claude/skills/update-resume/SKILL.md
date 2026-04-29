@@ -25,6 +25,7 @@ description: >
   - `src/data/skills.ts` — 技能進度條
   - `src/data/techStack.ts` — 技術棧分類
   - `src/data/stats.ts` — GitHub 統計
+  - `index.html` — SEO / Open Graph / Twitter Card meta tags（社群分享預覽）
 - **中文履歷 Markdown**: `ref_src/resume_zh.md`
 - **英文履歷 Markdown**: `ref_src/resume_en.md`
 - **中文 PDF**: `public/resume_zh.pdf`
@@ -51,7 +52,8 @@ description: >
 6. 更新 GitHub Stats
 7. 更新 Contact 資訊
 8. 更新 Education (學歷)
-9. 其他
+9. 更新 Site Meta (網站 SEO / OG / Twitter 預覽)
+10. 其他
 
 請輸入編號或直接描述你想更新的內容：
 ```
@@ -97,6 +99,17 @@ description: >
 ```
 
 若 `main.md` 尚未有 `## Education` 區段，需於 Step 4 一併新增該區段標題。
+
+#### 更新 Site Meta（網站 SEO / Open Graph）：
+
+`Site Meta` 用於 `index.html` 的 SEO + 社群分享預覽（Facebook / Twitter / LinkedIn / Slack 等 crawler 不執行 JavaScript，看到的是靜態 HTML）。對 `## Site Meta` 區段使用 AskUserQuestion 依序詢問：
+
+1. **Site URL** — 部署後的對外網址，**結尾保留斜線**，含 subpath（例：`https://example.com/smartresume/`）
+2. **SEO Title（zh-TW）** 和 **SEO Title（en）** — 簡潔的網站標題，建議 `姓名 - 主要角色`（例：`Alex Chen - 全端開發者`）
+3. **SEO Description（zh-TW）** 和 **SEO Description（en）** — 一句話自介，建議 100~160 字元
+4. **Keywords** — 逗號分隔的關鍵字，可混合中英文（例：`Full-Stack Developer, Vue, AI, 全端開發者`）
+
+寫入 `main.md` 時更新 `## Site Meta` 區段對應欄位。若 `main.md` 尚未有 `## Site Meta` 區段，需於 Step 4 一併新增該區段（位置：Header 之後、`## Hero` 之前）。
 
 #### 更新其他區段：
 
@@ -193,6 +206,7 @@ mv ref_src/resume_en.pdf public/resume_en.pdf
   - src/i18n/zh-TW.ts — [更新了 xxx]
   - src/i18n/en.ts — [更新了 xxx]
   - (其他有更動的 src/data/*.ts 檔案)
+  - index.html — [若 Site Meta 有變更，列出 og:title / og:description / og:url / canonical 等]
 
 💡 提醒：記得 commit 這些變更並重新部署網站。
 ```
@@ -222,6 +236,7 @@ Do **not** ask y/N. Do **not** loop back. Just inform and exit.
 | Side Projects | `src/i18n/zh-TW.ts`, `src/i18n/en.ts` | `projects.{id}.title`, `.subtitle`, `.description` |
 | GitHub Stats | `src/data/stats.ts` | `GitHubStat[]` — id + value |
 | Contact | `src/i18n/zh-TW.ts`, `src/i18n/en.ts` | `contact.locationValue`, `contact.interest1`-`4` |
+| Site Meta | `index.html` | `<title>`, `<meta name="description">`, `<meta name="author">`, `<meta name="keywords">`, `og:url`, `og:title`, `og:description`, `twitter:url`, `twitter:title`, `twitter:description`, `<link rel="canonical">` |
 | Professional Summary | — | 僅限履歷，不同步到網站 |
 | Work Experience | — | 僅限履歷，不同步到網站 |
 | Education | — | 僅限履歷，不同步到網站 |
@@ -252,6 +267,29 @@ Do **not** ask y/N. Do **not** loop back. Just inform and exit.
 - `**Key:** Value` → 提取語言無關的值
 - `- Name (N%)` → 提取技能名稱和百分比（Skill Bars）
 - `- Item` → 提取清單項目（Tech Stack items）
+
+### index.html 同步細節
+
+`Site Meta` 區段同步到 `index.html` 時，使用 zh-TW 版本作為靜態值（runtime composable `useOgMeta` 會在 client side 依 locale 切換英文）。對應替換規則：
+
+| `main.md` 欄位 | `index.html` 替換目標 |
+|---|---|
+| `SEO Title（zh-TW）` | `<title>` 內容文字 |
+| `SEO Title（zh-TW）` | `<meta property="og:title" content="...">` |
+| `SEO Title（zh-TW）` | `<meta name="twitter:title" content="...">` |
+| `SEO Description（zh-TW）` | `<meta name="description" content="...">` |
+| `SEO Description（zh-TW）` | `<meta property="og:description" content="...">` |
+| `SEO Description（zh-TW）` | `<meta name="twitter:description" content="...">` |
+| `Site URL` | `<meta property="og:url" content="...">` |
+| `Site URL` | `<meta name="twitter:url" content="...">` |
+| `Site URL` | `<link rel="canonical" href="...">` |
+| `Keywords` | `<meta name="keywords" content="...">` |
+| Header 第 1 行 `# {Name}` | `<meta name="author" content="...">` |
+
+**注意：**
+- `og:image` / `twitter:image` 路徑 (`/og-images/home-zh-TW.png`) **不要動**，由 Vite build 時自動加上 `base` prefix（subpath 部署用）
+- `<html lang="zh-TW">` 與 `<meta property="og:locale">` 不在同步範圍
+- `Site URL` 結尾必須有斜線（`https://example.com/`），canonical 才正確
 
 ## Notes
 

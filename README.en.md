@@ -55,6 +55,8 @@ cd SmartResume && npm install
 
 Interactive Q&A — AI syncs everything to website files and generates resume PDFs automatically.
 
+> 💡 Pick "**Update Site Meta**" from the main menu to set the page title, SEO description, `og:url`, and social-sharing preview text (Facebook / Twitter / LinkedIn / Slack crawlers don't run JavaScript — they read the static OG meta tags from `index.html`, so skipping this step leaves the template demo values visible to anyone sharing your link).
+
 **Step 3: Polish (recommended)**
 
 After the resume is filled in, three optional skills round out the site:

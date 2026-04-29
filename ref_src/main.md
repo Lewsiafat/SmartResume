@@ -10,6 +10,19 @@
 
 ---
 
+## Site Meta
+
+> 用於 `index.html` 的 SEO / Open Graph / Twitter Card meta tags。`Site URL` 是部署後的對外網址（含 subpath，結尾保留斜線），會寫入 `og:url`、`twitter:url`、`<link rel="canonical">`。SEO Title / Description 為雙語；`index.html` 為單檔，預設使用 zh-TW 版本，runtime composable 會在 client 端依 locale 切換。
+
+**Site URL:** https://lewsi.ddns.net/smartresume/
+**SEO Title（zh-TW）：** Alex Chen - 全端開發者
+**SEO Title（en）：** Alex Chen - Full-Stack Developer
+**SEO Description（zh-TW）：** 全端開發者，專精於現代 Web 應用、AI 工具與可擴展的後端服務。位於台灣。
+**SEO Description（en）：** Full-Stack Developer specializing in modern web applications, AI tooling, and scalable backend services. Based in Taiwan.
+**Keywords:** Full-Stack Developer, Vue, TypeScript, Python, AI, Taiwan, 全端開發者
+
+---
+
 ## Hero
 
 **Subtitle（zh-TW）：** 全端開發者 | AI 愛好者 | 開源貢獻者
