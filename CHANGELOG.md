@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.4.1] - 2026-04-29
+
+Patch release — documentation, demo content, and one fork-user-blocking skill bug fix. No source code changed.
+
+### Added
+- **`ref_src/case_studies/taskBoard.{zh-TW,en}.md`** — independently authored bilingual case study for the demo `taskBoard` project (intentionally distinct from `example_taskBoard.*` so the manifest picks it up and the demo site actually renders a `Read Case Study →` deep page at `/projects/taskBoard`). Lets fork users see the real shape of `/add-case-study` output before scaffolding their own
+- **README "polish" step + extra use cases** — both `README.md` and `README.en.md` Quick Start gain `Step 3: 進階個人化 / Polish` listing `install-avatar` / `add-case-study` / `linkedin-suggest`; deploy step renumbered to 4. Use Cases append three new scenarios (write a case study, install avatar, sync LinkedIn)
+- **Skills overview Mermaid diagram** — README Skills section grows a Mermaid graph splitting the toolchain into two axes: *personal polish* (avatar / case study / linkedin) vs *job application flow* (jd-match → job-apply → job-release)
+
+### Fixed
+- **`theme-extractor` SKILL.md pointed at home-dir global path** — Step 2b read presets from `~/.claude/skills/theme-factory/themes/`, which fork users do not have. The skill is bundled at `.claude/skills/theme-factory/` (10 preset themes, version-controlled via `.gitignore` `!.claude/skills/`), so both occurrences (Input Sources list + Step 2b body) now point at the project-relative path with a `(bundled in this project)` note. Mirrored in `.agent/skills/theme-extractor/SKILL.md`
+- **`playwright-skill/API_REFERENCE.md` install example used home-dir path** — `cd ~/.claude/skills/playwright-skill` would have sent fork users hunting in `~/.claude/`. Repointed to `cd .claude/skills/playwright-skill` with a clarifying comment. Mirrored in `.agent/skills/playwright-skill/API_REFERENCE.md`
+
 ## [1.4.0] - 2026-04-28
 
 P1 roadmap sprint — five plans landed in one minor release. Spec lives in `docs/superpowers/specs/2026-04-28-p1-roadmap-1-2week-sprint-design.md`; the 5 implementation plans are tracked in `specs/road-map_p1.md`.
