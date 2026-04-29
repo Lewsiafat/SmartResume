@@ -57,14 +57,25 @@ npm install
 
 透過互動式 Q&A 填寫個人資訊，AI 自動同步至所有網站檔案並產生履歷 PDF。
 
-**Step 3：部署上線**
+**Step 3：進階個人化（推薦）**
+
+填完履歷後，可以一次跑完三個輔助 skills 把網站打磨到位：
+
+```
+/install-avatar             # 上傳個人照片，自動產出 128/256/512 多尺寸 WebP+PNG
+/add-case-study taskBoard   # 為主力專案寫深度頁（Problem / Solution / Tech / Result / Lessons）
+/linkedin-suggest           # 從 SSOT 產出雙語 LinkedIn profile 草稿
+```
+
+- 三個都跑完後再 `npm run build`，網站就會包含頭像、Case Study 路由、LinkedIn 草稿輸出
+- 任一個都可以略過或晚點再做，不影響主站運作
+
+**Step 4：部署上線**
 
 ```bash
 npm run build
 # 部署到 GitHub Pages / Vercel / VPS（見部署說明）
 ```
-
-- (Optional) Want a deep dive on a project? Run `/add-case-study {projectId}` to scaffold a Case Study page.
 
 ---
 
@@ -176,6 +187,54 @@ flowchart TD
 
 ---
 
+### 情境 7：為主力專案撰寫 Case Study
+
+適合：想讓履歷更有說服力，把專案從卡片升級成完整故事
+
+```
+/add-case-study taskBoard
+```
+
+- 自動從 `ref_src/case_studies/_template.md` scaffold 出 `taskBoard.{en,zh-TW}.md`
+- 雙語可獨立撰寫：Problem / Solution / Tech Choices / Result / Lessons Learned
+- 下次 `npm run build` 會重新掃描 `ref_src/case_studies/`，產出 `src/data/case-studies-manifest.ts`
+- ProjectCard 自動長出「深度解析 →」連結，路由 `/projects/{projectId}` 渲染深度頁
+- 任一語系缺檔不會壞，manifest 會 fallback 到可用的語系
+
+範例請看 `ref_src/case_studies/taskBoard.{en,zh-TW}.md`（demo 站台已上線）。
+
+---
+
+### 情境 8：個人頭像快速安裝
+
+適合：剛 fork 完，想用自己的照片取代 demo 頭像
+
+```
+/install-avatar
+```
+
+- 提供本地圖片或圖片網址，AI 用 sharp 自動 resize 成 128 / 256 / 512 三個尺寸
+- 同時產出 WebP（主格式）+ PNG（fallback），Lighthouse 友善
+- 自動寫入 `public/avatar/` 並更新 `ref_src/main.md` 的 `Avatar` 欄位
+- 詢問是否一併重新產履歷 PDF，讓網站與 PDF 頭像同步
+
+---
+
+### 情境 9：同步 LinkedIn Profile
+
+適合：履歷剛改版，想同步把 LinkedIn 一起更新
+
+```
+/linkedin-suggest
+```
+
+- 從 `ref_src/main.md` SSOT 一次產出雙語草稿：Headline / About / Experience / Skills / Featured / Open to Work
+- Hybrid 模式：先 one-shot 全文初稿，再支援逐欄位互動微調
+- Skill 不直接寫到 LinkedIn（沒有官方 API 權限）— 產出的是可直接貼上的格式化文字
+- 適合每次 `update-resume` 後跑一次，避免兩邊資訊不同步
+
+---
+
 ## 🤖 AI Skills 完整說明
 
 ### Skill 存放位置
@@ -201,6 +260,39 @@ flowchart TD
 | `install-avatar` | `/install-avatar` | sharp 多尺寸頭像安裝（128/256/512 WebP+PNG），同步 `main.md` Avatar 欄位 |
 
 > 專案另含通用工具類 skill（`pdf`、`docx`、`canvas-design`、`frontend-design`、`theme-factory`、`playwright-skill`），存放於同一目錄下。
+
+### Skills 全景圖
+
+整體 Skills 分為兩條軸線：**個人化打磨**（先把 SSOT 與 Portfolio 養好）→ **求職流程**（針對職缺客製化並封存）：
+
+```mermaid
+flowchart LR
+    subgraph polish[個人化打磨]
+        UR[/update-resume/]
+        AV[/install-avatar/]
+        CS[/add-case-study/]
+        LS[/linkedin-suggest/]
+        TE[/theme-extractor/]
+    end
+    subgraph apply[求職流程]
+        JM[/jd-match/]
+        JA[/job-apply/]
+        JR[/job-release/]
+    end
+    UR -->|main.md SSOT| JM
+    AV -.-> UR
+    CS -.-> UR
+    LS -.-> UR
+    TE -.-> UR
+    JM --> JA --> JR
+
+    style polish fill:#fef3e8,stroke:#f4a261,color:#2b2b2b
+    style apply fill:#fde7e7,stroke:#c1666b,color:#2b2b2b
+```
+
+- 左側五個 skill 互不依賴，需要時再跑（avatar / case study / linkedin / theme 都是選用）
+- 右側三個 skill 是序列流程，建議按 `/jd-match → /job-apply → /job-release` 走完
+- 兩側透過 `ref_src/main.md` SSOT 串接：左側更新 SSOT，右側讀 SSOT 客製化
 
 ---
 

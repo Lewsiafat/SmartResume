@@ -55,7 +55,20 @@ cd SmartResume && npm install
 
 Interactive Q&A — AI syncs everything to website files and generates resume PDFs automatically.
 
-**Step 3: Deploy**
+**Step 3: Polish (recommended)**
+
+After the resume is filled in, three optional skills round out the site:
+
+```
+/install-avatar             # Resize a photo into 128/256/512 WebP + PNG
+/add-case-study taskBoard   # Write a deep-dive (Problem / Solution / Tech / Result / Lessons)
+/linkedin-suggest           # Generate bilingual LinkedIn profile copy from the SSOT
+```
+
+- Run all three, then `npm run build`, and the site picks up your avatar, case-study route, and LinkedIn output.
+- Each is fully optional and can be deferred without breaking anything else.
+
+**Step 4: Deploy**
 
 ```bash
 npm run build
@@ -115,6 +128,42 @@ From finding a job listing to archiving a complete application package.
 
 Provide any website URL or design screenshot. AI extracts the color palette (primary, secondary, accent, background), previews it, and applies it to your entire Portfolio site — including Tailwind CSS variables and dark mode colors.
 
+### Use Case 7: Write a Case Study for Your Headline Project
+
+```
+/add-case-study taskBoard
+```
+
+- Scaffolds `ref_src/case_studies/taskBoard.{en,zh-TW}.md` from `_template.md`
+- Each language is independent: Problem / Solution / Tech Choices / Result / Lessons Learned
+- Next `npm run build` re-scans `ref_src/case_studies/` and regenerates `src/data/case-studies-manifest.ts`
+- ProjectCard automatically grows a "Read Case Study →" link; route `/projects/{projectId}` renders the deep-dive
+- Either locale alone works — manifest falls back to whichever language exists
+
+See `ref_src/case_studies/taskBoard.{en,zh-TW}.md` for a live example (also visible on the demo site).
+
+### Use Case 8: Install Your Avatar
+
+```
+/install-avatar
+```
+
+- Provide a local image file or URL; sharp resizes it into 128 / 256 / 512 px
+- Outputs WebP (primary) and PNG (fallback) for Lighthouse-friendly delivery
+- Writes to `public/avatar/` and updates the `Avatar` field in `ref_src/main.md`
+- Optionally regenerates resume PDFs so the website and PDF avatars stay in sync
+
+### Use Case 9: Sync Your LinkedIn Profile
+
+```
+/linkedin-suggest
+```
+
+- Reads `ref_src/main.md` SSOT and produces bilingual copy: Headline / About / Experience / Skills / Featured / Open to Work
+- Hybrid mode: one-shot full draft first, then per-field interactive refinement
+- Skill never writes to LinkedIn directly (no official API access) — it produces formatted text you paste in
+- Run after each `/update-resume` to keep both sides aligned
+
 ---
 
 ## 🤖 AI Skills — Where They Live
@@ -140,6 +189,39 @@ All skills are stored in two directories with identical content, so different AI
 | `install-avatar` | `/install-avatar` | sharp-based multi-size avatar installer (128/256/512 WebP+PNG); syncs `main.md` Avatar field |
 
 > The project also includes general-purpose utility skills (`pdf`, `docx`, `canvas-design`, `frontend-design`, `theme-factory`, `playwright-skill`) in the same directories.
+
+### Skills at a Glance
+
+The skills split into two tracks: **Personal polish** (build out your SSOT and Portfolio) and **Job application flow** (tailor and archive per opportunity):
+
+```mermaid
+flowchart LR
+    subgraph polish[Personal polish]
+        UR[/update-resume/]
+        AV[/install-avatar/]
+        CS[/add-case-study/]
+        LS[/linkedin-suggest/]
+        TE[/theme-extractor/]
+    end
+    subgraph apply[Job application flow]
+        JM[/jd-match/]
+        JA[/job-apply/]
+        JR[/job-release/]
+    end
+    UR -->|main.md SSOT| JM
+    AV -.-> UR
+    CS -.-> UR
+    LS -.-> UR
+    TE -.-> UR
+    JM --> JA --> JR
+
+    style polish fill:#fef3e8,stroke:#f4a261,color:#2b2b2b
+    style apply fill:#fde7e7,stroke:#c1666b,color:#2b2b2b
+```
+
+- The five polish skills are independent — run any of them whenever you need to (avatar / case study / linkedin / theme are all optional).
+- The three application-flow skills are sequential: `/jd-match → /job-apply → /job-release`.
+- Both tracks meet at `ref_src/main.md` — the polish track updates the SSOT; the application flow reads it for customization.
 
 ---
 
