@@ -26,6 +26,21 @@ function readAuthor(): Author {
   return { name, role, tag }
 }
 
+function readAvatarDataUrl(): string | undefined {
+  let avatarPath = '/avatar/avatar-512.png'
+  try {
+    const md = readFileSync(MAIN_MD, 'utf-8')
+    const m = md.match(/^\*\*Avatar:?\*\*\s*(.+)$/mi)
+    if (m) avatarPath = m[1].trim()
+  } catch {}
+  // Prefer PNG (puppeteer headless renders PNG most reliably)
+  const pngPath = avatarPath.replace(/\.(webp|jpg|jpeg)$/i, '.png')
+  const file = join(ROOT, 'public', pngPath.replace(/^\//, ''))
+  if (!existsSync(file)) return undefined
+  const data = readFileSync(file)
+  return `data:image/png;base64,${data.toString('base64')}`
+}
+
 function listCaseStudies(): { id: string; locales: string[] }[] {
   if (!existsSync(CASE_STUDY_DIR)) return []
   const files = readdirSync(CASE_STUDY_DIR).filter(f => f.endsWith('.md'))
@@ -54,9 +69,18 @@ function readCaseStudyTitleAndTagline(id: string, locale: string): { title: stri
   return { title, tagline }
 }
 
-async function shoot(page: Page, templateUrl: string, output: string) {
+async function shoot(page: Page, templateUrl: string, output: string, avatarDataUrl?: string) {
   await page.goto(templateUrl, { waitUntil: 'networkidle0' })
   await page.setViewport({ width: 1200, height: 630, deviceScaleFactor: 1 })
+  if (avatarDataUrl) {
+    await page.evaluate(async (url) => {
+      const img = document.getElementById('avatar') as HTMLImageElement | null
+      if (!img) return
+      img.removeAttribute('hidden')
+      img.src = url
+      try { await img.decode() } catch {}
+    }, avatarDataUrl)
+  }
   await page.screenshot({ path: output as `${string}.png`, type: 'png' })
   console.log(`[og] wrote ${output}`)
 }
@@ -68,6 +92,8 @@ async function main() {
   }
   mkdirSync(OUTPUT_DIR, { recursive: true })
   const author = readAuthor()
+  const avatarDataUrl = readAvatarDataUrl()
+  if (!avatarDataUrl) console.warn('[og] avatar not found — generating without avatar')
 
   const browser = await puppeteer.launch({ headless: true })
   const page = await browser.newPage()
@@ -75,7 +101,7 @@ async function main() {
   // Home (zh + en — currently same content; English would use translated headline)
   for (const lang of ['zh-TW', 'en']) {
     const u = `file://${join(TEMPLATES_DIR, 'home.html')}?name=${encodeURIComponent(author.name)}&role=${encodeURIComponent(author.role)}&tag=${encodeURIComponent(author.tag)}`
-    await shoot(page, u, join(OUTPUT_DIR, `home-${lang}.png`))
+    await shoot(page, u, join(OUTPUT_DIR, `home-${lang}.png`), avatarDataUrl)
   }
 
   // About (one image, language-neutral)
@@ -83,6 +109,7 @@ async function main() {
     page,
     `file://${join(TEMPLATES_DIR, 'about.html')}?name=${encodeURIComponent(author.name)}&role=${encodeURIComponent(author.role)}`,
     join(OUTPUT_DIR, 'about.png'),
+    avatarDataUrl,
   )
 
   // Case studies (one image per id; English title preferred when available)
