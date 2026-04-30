@@ -18,7 +18,7 @@ const ogMeta = computed(() => ({
   title: t('hero.name') + ' — ' + t('hero.subtitle'),
   description: t('hero.typingText1'),
   image: `/og-images/home-${locale.value}.png`,
-  url: location.origin + '/',
+  url: '/',
 }))
 
 useOgMeta(ogMeta)
