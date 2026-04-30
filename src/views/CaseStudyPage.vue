@@ -56,7 +56,7 @@ async function loadMarkdown() {
       title: `${h1} — Case Study`,
       description: firstPara || t('caseStudy.back'),
       image: `/og-images/case-${projectId.value}.png`,
-      url: `${location.origin}/projects/${projectId.value}`,
+      url: `/projects/${projectId.value}`,
     }
   } catch {
     notFound.value = true

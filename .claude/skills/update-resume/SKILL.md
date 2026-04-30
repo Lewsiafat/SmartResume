@@ -287,7 +287,7 @@ Do **not** ask y/N. Do **not** loop back. Just inform and exit.
 | Header 第 1 行 `# {Name}` | `<meta name="author" content="...">` |
 
 **注意：**
-- `og:image` / `twitter:image` 路徑 (`/og-images/home-zh-TW.png`) **不要動**，由 Vite build 時自動加上 `base` prefix（subpath 部署用）
+- `og:image` / `twitter:image` 路徑 (`/og-images/home-zh-TW.png`) **不要動**：build 時 Vite 會先加上 `base` subpath，再由 `absoluteOgImagePlugin`（`vite.config.ts`）依 `Site URL` 補成完整 URL，`dist/index.html` 內會是 `https://example.com/sub/og-images/home-zh-TW.png`
 - `<html lang="zh-TW">` 與 `<meta property="og:locale">` 不在同步範圍
 - `Site URL` 結尾必須有斜線（`https://example.com/`），canonical 才正確
 
