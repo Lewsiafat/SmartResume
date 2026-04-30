@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.4.2] - 2026-04-30
+
+Patch release — social sharing fixes + meta SSOT. SEO/OG meta tags moved into the `ref_src/main.md` SSOT (out of hand-edited `index.html`), and the OG preview pipeline now actually works end-to-end on Facebook / LinkedIn / Twitter / Threads / Slack — both server-rendered and client-rendered meta tags carry the correct absolute URL with subpath, and the avatar shows up instead of an empty circle.
+
+### Added
+- **`## Site Meta` section in `ref_src/main.md`** + sync into `index.html` — adds `Site URL`, bilingual `SEO Title` / `SEO Description`, and `Keywords` to the SSOT. The `update-resume` skill writes these into `<title>`, `<meta name="description">`, `<meta name="keywords">`, `og:url` / `og:title` / `og:description`, `twitter:url` / `twitter:title` / `twitter:description`, and `<link rel="canonical">`. Why: social-sharing crawlers (Facebook / Twitter / LinkedIn / Slack) don't execute JavaScript, so the runtime `useOgMeta` composable is invisible to them — they only ever see static `index.html`. Without this sync, fork users' shared links keep showing the template demo (`Alex Chen` / `example.com`) until they hand-edit `index.html`. Mirrored across `.claude/skills/update-resume/SKILL.md` + `.agent/skills/update-resume/SKILL.md`
+- **README "Update Site Meta" tip** — both `README.md` (zh) and `README.en.md` Step 2 (Update Resume) now flag the menu option that wires the SSOT into `index.html`, so fork users don't ship to production with the demo's OG preview text
+
+### Fixed
+- **Empty avatar circle in OG previews** — `scripts/og-templates/home.html` / `about.html` had a placeholder `<div>` with no `<img>`, so the LinkedIn / Facebook preview rendered an empty translucent circle. `scripts/generate-og-images.ts` now reads the avatar PNG, encodes it as a base64 data URL, and injects via `page.evaluate` (avoids file:// URL length limits some hosts hit). The `<img>` lives hidden in the template and is revealed once `src` is set and `decoded`. `case-study.html` intentionally has no avatar so it's left alone
+- **`og:image` missing the `/smartresume/` subpath** — crawlers like Threads / X / Discord / Slack are spec-strict and reject root-relative URLs. Two separate paths were producing relative URLs:
+  1. **Server-side** — `dist/index.html` shipped `/smartresume/og-images/home-zh-TW.png` after Vite's base rewrite, which is still relative
+  2. **Client-side** — `useOgMeta` ran `onMounted` and overwrote the meta with `new URL(path, location.origin)`, which silently strips the base subpath when path starts with `/`, producing `https://host/og-images/...` (no `/smartresume/`)
+
+  Fix: `vite.config.ts` adds an `absoluteOgImagePlugin` (`enforce: 'post'`) that reads Site URL origin from `main.md` and prepends it to `og:image` / `twitter:image` after Vite's base rewrite. `useOgMeta` now resolves paths through `import.meta.env.BASE_URL` so client-side meta also carry the subpath. `HomePage` / `CaseStudyPage` pass relative `url` and let `useOgMeta` handle origin/base. Verified end-to-end with Playwright against `vite preview` (`VITE_BASE=/smartresume/`) — all three meta tags include `/smartresume/`
+
 ## [1.4.1] - 2026-04-29
 
 Patch release — documentation, demo content, and one fork-user-blocking skill bug fix. No source code changed.

@@ -105,7 +105,7 @@ All skills are stored in `.claude/skills/` and `.agent/skills/` (identical conte
 ### Key Concepts
 
 - **SSOT**: `ref_src/main.md` is the single source of truth for all resume and portfolio data
-- **Data flow**: `main.md` → (skill sync) → `src/data/*.ts` + `src/i18n/*.ts` → `public/resume_*.pdf`
+- **Data flow**: `main.md` → (skill sync) → `src/data/*.ts` + `src/i18n/*.ts` + `index.html` (SEO/OG meta tags from the `## Site Meta` SSOT block) → `public/resume_*.pdf`
 - **Branch strategy**: `master` stays generic; `apply/*` branches hold per-job customization
 - **Design spec**: `docs/superpowers/specs/2026-04-09-resume-single-source-of-truth-design.md`
 
